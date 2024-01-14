@@ -10,6 +10,27 @@ For large libraries, MetaFFI provides a compiler that generates the code in your
 
 There's no virtual machines of any sort. Each langauges runs in its own runtime.
 
+## Installation
+
+The installation is an all-in-one, cross-platform, Python3 script. Just download and run.
+
+Latest version [`v0.1.0`](https://github.com/MetaFFI/metaffi-core/releases/download/v0.1.0/metaffi_installer.py)
+
+Flags: <br>
+**/s** - silent mode, uses default installation.<br>
+**--skip-sanity** - skips all tests after installation<br>
+**--include-extended-tests** - runs extended tests after installation. Installs several 3rd party libraries for tests (e.g. beautiful soup and others)
+
+## GitHub Projects Links
+
+[MetaFFI Core](https://github.com/MetaFFI/metaffi-core/)
+
+[Python3 Plugin](https://github.com/MetaFFI/lang-plugin-python3)
+
+[OpenJDK Plugin](https://github.com/MetaFFI/lang-plugin-openjdk)
+
+[Go Plugin](https://github.com/MetaFFI/lang-plugin-go)
+
 ## A Simple Example
 
 `log4j` from Python3 ([link](https://github.com/MetaFFI/lang-plugin-python3/blob/main/api/tests/extended/openjdk/log4j/log4j_test.py)):
@@ -41,17 +62,6 @@ runtime.release_runtime_plugin()
 ```
 
 More examples from [Python3](https://github.com/MetaFFI/lang-plugin-python3/tree/main/api/tests), [Java](https://github.com/MetaFFI/lang-plugin-openjdk/tree/main/api/tests) and [Go](https://github.com/MetaFFI/lang-plugin-go/tree/main/api/tests).
-
-## Installation
-
-The installation is an all-in-one, cross-platform, Python3 script. Just download and run.
-
-Latest version [`v0.1.0`](https://github.com/MetaFFI/metaffi-core/releases/download/v0.1.0/metaffi_installer.py)
-
-Flags: <br>
-**/s** - silent mode, uses default installation.<br>
-**--skip-sanity** - skips all tests after installation<br>
-**--include-extended-tests** - runs extended tests after installation. Installs several 3rd party libraries for tests (e.g. beautiful soup and others)
 
 ## Supported Langauges (for now)
 
@@ -86,3 +96,18 @@ Flags: <br>
 
 ## Technical Details
 
+[Terminology](/technical/terminology/)
+
+[System Overview]()
+
+[Cross-Language Link Runtime (XLLR)]()
+
+[Runtime Plugin Interface]()
+
+[Compiler Plugin Interface]()
+
+[IDL Plugin Interface]()
+
+[Common Data Types (CDT)]()
+
+[Cross-Language Call]()
