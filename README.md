@@ -1,4 +1,4 @@
-# MetaFFI - Multi-Lingual Interoperability System
+# MetaFFI
 
 Have you ever wanted to use different programming languages together? With MetaFFI, you can do just that. MetaFFI lets you access functions, methods, fields, and even pass callbacks from any language you want.
 
@@ -85,3 +85,4 @@ Flags: <br>
 **$CGO_ENABLED** must be set to 1 and **\$CGO_CFLAGS** must add $METAFFI_HOME as include directory for Go support. Installer sets the environment variables.
 
 ## Technical Details
+
