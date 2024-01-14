@@ -82,6 +82,6 @@ Flags: <br>
 
 **$JAVA_HOME** must be set for JVM support. Installer sets the evironment variable.
 
-**$CGO_ENABLED** must be set to `1` and **\$CGO_CFLAGS** must add $METAFFI_HOME as include directory for Go support. Installer sets the environment variables.
+**$CGO_ENABLED** must be set to 1 and **\$CGO_CFLAGS** must add $METAFFI_HOME as include directory for Go support. Installer sets the environment variables.
 
 ## Technical Details
