@@ -10,7 +10,7 @@ For large libraries, MetaFFI provides a compiler that generates the code in your
 
 There's no virtual machines of any sort. Each langauges runs in its own runtime.
 
-## A few simple examples
+## A Simple Example
 
 `log4j` from Python3 ([link](https://github.com/MetaFFI/lang-plugin-python3/blob/main/api/tests/extended/openjdk/log4j/log4j_test.py)):
 
