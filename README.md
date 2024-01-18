@@ -4,11 +4,9 @@ Have you ever wanted to use different programming languages together? With MetaF
 
 MetaFFI works similar to loading a C function from a library, but it lets you use that same concept to load entities in any other language.
 
-How cool is that?
+How awesome is that?
 
-For large libraries, MetaFFI provides a compiler that generates the code in your programming language, taking all the boring repetitive work of loading the entities.
-
-There's no virtual machines of any sort. Each langauges runs in its own runtime.
+There's no virtual machines of any sort. Each langauges runs in its own runtime, communicating via C.
 
 ## Installation
 
@@ -22,6 +20,8 @@ Flags: <br>
 **--include-extended-tests** - runs extended tests after installation. Installs several 3rd party libraries for tests (e.g. beautiful soup and others)
 
 ## GitHub Projects Links
+
+[MetaFFI on GitHub](https://github.com/MetaFFI/)
 
 [MetaFFI Core](https://github.com/MetaFFI/metaffi-core/)
 
@@ -63,12 +63,30 @@ runtime.release_runtime_plugin()
 
 More examples from [Python3](https://github.com/MetaFFI/lang-plugin-python3/tree/main/api/tests), [Java](https://github.com/MetaFFI/lang-plugin-openjdk/tree/main/api/tests) and [Go](https://github.com/MetaFFI/lang-plugin-go/tree/main/api/tests).
 
+## API Usage Details & Documentation
+
+API usage details for [Python3](/usage/python3/)
+
+API usage details for [OpenJDK using Java](/usage/jvm/)
+
+API usage details for [Go](/usage/go/)
+
+## Function Path Syntax
+
+Function path is
+
+[Python3]()
+
+[OpenJDK]()
+
+[Go]()
+
 ## Supported Langauges (for now)
 
 |Language | Supported | Tested|
 |:--------|:---------:|:-----:|
 | Go | From v1.18 | v1.18 &rarr; v1.21.4 |
-| JVM Languages | Any JNI supported JVM | OpenJDK11 x64<br>Microsoft OpenJDK11 Hotspot JVM
+| JVM Languages | JNI supported JVM | OpenJDK11 x64<br>Microsoft OpenJDK11 Hotspot JVM
 | Python3 | v3.11  | v3.11
 
 * Note: Due to a [bug](https://github.com/golang/go/issues/58542) in Go, using Go &rarr; OpenJDK in **Windows**, causes the process to crash. Fix is expected in Go1.23. In the meantime, MetaFFI install provides a temporary patch to fix the issue.
@@ -98,16 +116,18 @@ More examples from [Python3](https://github.com/MetaFFI/lang-plugin-python3/tree
 
 [Terminology](/technical/terminology/)
 
-[System Overview]()
+[System Overview](/technical/system-overview/)
 
-[Cross-Language Link Runtime (XLLR)]()
+[Cross-Language Link Runtime (XLLR)](/technical/xllr/)
 
-[Runtime Plugin Interface]()
+[Runtime Plugin Interface](/technical/runtime-plugin-interface/)
 
-[Compiler Plugin Interface]()
+[Compiler Plugin Interface](/technical/compiler-plugin-interface/)
 
-[IDL Plugin Interface]()
+[IDL Plugin Interface](/technical/idl-plugin-interface/)
 
-[Common Data Types (CDT)]()
+[Common Data Types (CDT)](/technical/cdt/)
 
-[Cross-Language Call]()
+[Cross-Language Call](/technical/xcall/)
+
+[How to add language support](/technical/add-langauge-plugin/)
