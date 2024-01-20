@@ -65,21 +65,33 @@ More examples from [Python3](https://github.com/MetaFFI/lang-plugin-python3/tree
 
 ## API Usage Details & Documentation
 
-API usage details for [Python3](/usage/python3/)
+The API is a user-friendly wrapper to MetaFFI's XLLR (Cross-Language Link Runtime) C-interface.
 
-API usage details for [OpenJDK using Java](/usage/jvm/)
+Detailed usage and documentation of the APIs for each of the plugins:
 
-API usage details for [Go](/usage/go/)
+[Python3](/usage/python3/)
 
-## Function Path Syntax
+[Java Virtual Machine](/usage/jvm/)
 
-Function path is
+[Go](/usage/go/)
 
-[Python3]()
+## Function Path
 
-[OpenJDK]()
+*Function path* is a string describing the foreign entity in the loaded module.
 
-[Go]()
+In `C`, for example, a module would be a `.so/.dll/.dylib` file, and function path would be the name of the exported function.
+
+In other languages, or other entities beside function, just a name does not suffice. Therefore, function path is build of a list of key-value pairs or tags delimited by a comma: `key1=val1,tag1,...,...,tagN,keyN=valN`.
+
+Each plugin expects different keys and/tags. Although we try to keep the keys and tags similar across plugins, they are not identical.
+
+The list of each runtime plugin is listed in the following links:
+
+[Python3](/usage/function_path/python3/)
+
+[JVM](/usage/function_path/jvm/)
+
+[Go](/usage/function_path/go/)
 
 ## Supported Langauges (for now)
 
@@ -87,7 +99,8 @@ Function path is
 |:--------|:---------:|:-----:|
 | Go | From v1.18 | v1.18 &rarr; v1.21.4 |
 | JVM Languages | JNI supported JVM | OpenJDK11 x64<br>Microsoft OpenJDK11 Hotspot JVM
-| Python3 | v3.11  | v3.11
+| Python3 | v3.11  | v3.11 |
+|
 
 * Note: Due to a [bug](https://github.com/golang/go/issues/58542) in Go, using Go &rarr; OpenJDK in **Windows**, causes the process to crash. Fix is expected in Go1.23. In the meantime, MetaFFI install provides a temporary patch to fix the issue.
 
@@ -99,6 +112,7 @@ Function path is
 |:---|:---:|:----:|
 | Windows | From 7 | 10, 11 |
 | Ubuntu | 22.04 | 22.04 |
+|
 
 * Lack of support is not due to system limitations, but time. If you like the project, consider to contribute and [add a new language support](add-language-plugin) 😊
 

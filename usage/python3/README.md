@@ -64,7 +64,7 @@ Parameters:
 
 The load method for the MetaFFIModule class loads a foreign entity from the module and returns a `Callable` that can be used to invoke the foreign entity from another language. If it `Callable` calls a Method or a Field of an object, the $1^{st}$ parameter is an instance of the object.
 
-The `load` method receives a [function path](/usage/function_path/) telling the runtime plugin the location of the entity inside the module.
+The `load` method receives a [function path](/README.md#function-path) telling the runtime plugin the location of the entity inside the module.
 
 The method should also pass a list of [MetaFFI Types](/usage/metaffi_types), specifying the type of the parameters and return values. `metaffi_type_with_alias` type is created by `new_metaffi_type_with_alias` function.
 

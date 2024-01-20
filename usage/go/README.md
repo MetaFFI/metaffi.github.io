@@ -59,7 +59,7 @@ The struct should not be created directly, but using the `MetaFFIRuntime.LoadMod
 
 The Load method in the MetaFFIModule struct loads a foreign entity from the module and returns a `func` that can be used to invoke the foreign entity in another language. If it `func` calls a Method or a Field of an object, the $1^{st}$ parameter is an instance of the object.
 
-The `Load` method receives a [function path](/usage/function_path/) telling the runtime plugin the location of the entity inside the module.
+The `Load` method receives a [function path](/README.md#function-path) telling the runtime plugin the location of the entity inside the module.
 
 The method should also pass a list of [MetaFFI Types](/usage/metaffi_types/), specifying the type of the parameters and return values. `Load` accepts `[]MetaFFIType`, if alias is also required, use  `LoadWithAlias` which accepts `[]MetaFFITypeWithAlias`.
 
@@ -103,21 +103,20 @@ The function returns the number of expected return values and their correspondin
 | <span style="font-family: courier;">metaffi_any_type</span> | <span style="font-family: courier;">interface{}</span> |
 | <span style="font-family: courier;">metaffi_null_type</span> | <span style="font-family: courier;">nil</span> |
 | <span style="font-family: courier;">metaffi_callable_type</span> | <span style="font-family: courier;">func</span><BR>(not supported yet)</span> |
-| <span style="font-family: courier;">metaffi_float64_array_type</span> | <span style="font-family: courier;">list</span> |
-| <span style="font-family: courier;">metaffi_float32_array_type</span> | <span style="font-family: courier;">list</span> |
-| <span style="font-family: courier;">metaffi_int8_array_type</span> | <span style="font-family: courier;">list</span> |
-| <span style="font-family: courier;">metaffi_int16_array_type</span> | <span style="font-family: courier;">list</span> |
-| <span style="font-family: courier;">metaffi_int32_array_type</span> | <span style="font-family: courier;">list</span> |
-| <span style="font-family: courier;">metaffi_int64_array_type</span> | <span style="font-family: courier;">list</span> |
-| <span style="font-family: courier;">metaffi_uint8_array_type</span> | <span style="font-family: courier;">list</span> |
-| <span style="font-family: courier;">metaffi_uint16_array_type</span> | <span style="font-family: courier;">list</span> |
-| <span style="font-family: courier;">metaffi_uint32_array_type</span> | <span style="font-family: courier;">list</span> |
-| <span style="font-family: courier;">metaffi_uint64_array_type</span> | <span style="font-family: courier;">list</span> |
-| <span style="font-family: courier;">metaffi_bool_array_type</span> | <span style="font-family: courier;">list</span> |
-| <span style="font-family: courier;">metaffi_char8_array_type</span> | <span style="font-family: courier;">list</span> |
-| <span style="font-family: courier;">metaffi_string8_array_type</span> | <span style="font-family: courier;">list</span> |
-| <span style="font-family: courier;">metaffi_string16_array_type</span> | <span style="font-family: courier;">list</span> |
-| <span style="font-family: courier;">metaffi_string32_array_type</span> | <span style="font-family: courier;">list</span> |
-| <span style="font-family: courier;">metaffi_any_array_type</span> | <span style="font-family: courier;">list</span> |
-| <span style="font-family: courier;">metaffi_handle_array_type</span> | <span style="font-family: courier;">list</span> |
-| <span style="font-family: courier;">metaffi_size_array_type</span> | <span style="font-family: courier;">list</span> |
+| <span style="font-family: courier;">metaffi_float64_array_type</span> | <span style="font-family: courier;">[]float64</span> |
+| <span style="font-family: courier;">metaffi_float32_array_type</span> | <span style="font-family: courier;">[]float32</span> |
+| <span style="font-family: courier;">metaffi_int8_array_type</span> | <span style="font-family: courier;">[]int8</span> |
+| <span style="font-family: courier;">metaffi_int16_array_type</span> | <span style="font-family: courier;">[]int16</span> |
+| <span style="font-family: courier;">metaffi_int32_array_type</span> | <span style="font-family: courier;">[]int32</span> |
+| <span style="font-family: courier;">metaffi_int64_array_type</span> | <span style="font-family: courier;">[]int64</span> |
+| <span style="font-family: courier;">metaffi_uint8_array_type</span> | <span style="font-family: courier;">[]uint8</span> |
+| <span style="font-family: courier;">metaffi_uint16_array_type</span> | <span style="font-family: courier;">[]uint16</span> |
+| <span style="font-family: courier;">metaffi_uint32_array_type</span> | <span style="font-family: courier;">[]uint32</span> |
+| <span style="font-family: courier;">metaffi_uint64_array_type</span> | <span style="font-family: courier;">uint64</span> |
+| <span style="font-family: courier;">metaffi_bool_array_type</span> | <span style="font-family: courier;">[]bool</span> |
+| <span style="font-family: courier;">metaffi_char8_array_type</span> | <span style="font-family: courier;">[]uint8</span> |
+| <span style="font-family: courier;">metaffi_string8_array_type</span> | <span style="font-family: courier;">[]string</span> |
+| <span style="font-family: courier;">metaffi_string16_array_type</span> | <span style="font-family: courier;">[]string</span> |
+| <span style="font-family: courier;">metaffi_string32_array_type</span> | <span style="font-family: courier;">[]string</span> |
+| <span style="font-family: courier;">metaffi_any_array_type</span> | <span style="font-family: courier;">[]interface{}</span> |
+| <span style="font-family: courier;">metaffi_handle_array_type</span> | <span style="font-family: courier;">[]MetaFFIHandle</span> |
