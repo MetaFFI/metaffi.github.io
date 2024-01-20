@@ -91,7 +91,7 @@ Function path is
 
 * Note: Due to a [bug](https://github.com/golang/go/issues/58542) in Go, using Go &rarr; OpenJDK in **Windows**, causes the process to crash. Fix is expected in Go1.23. In the meantime, MetaFFI install provides a temporary patch to fix the issue.
 
-* Lack of support is not due to system limitations, but time. If you like the project, consider to contribute 😊
+* Lack of support is not due to system limitations, but time. If you like the project, consider to contribute [add a new language support](add-language-plugin) 😊
 
 ## Supported Operating Systems (for now)
 
@@ -100,7 +100,7 @@ Function path is
 | Windows | From 7 | 10, 11 |
 | Ubuntu | 22.04 | 22.04 |
 
-* Lack of support is not due to system limitations, but time. If you like the project, consider to contribute 😊
+* Lack of support is not due to system limitations, but time. If you like the project, consider to contribute and [add a new language support](add-language-plugin) 😊
 
 ## Technical Notes
 
@@ -118,7 +118,9 @@ Function path is
 
 [System Overview](/technical/system-overview/)
 
-[Cross-Language Link Runtime (XLLR)](/technical/xllr/)
+[Challenges of Making an XCall](/technical/making-a-call/)
+
+[Cross-Language Link Runtime (XLLR) - Managing Runtimes](/technical/xllr/)
 
 [Runtime Plugin Interface](/technical/runtime-plugin-interface/)
 
@@ -128,6 +130,6 @@ Function path is
 
 [Common Data Types (CDT)](/technical/cdt/)
 
-[Cross-Language Call](/technical/xcall/)
+[XCall Calling Convention](/technical/xcall/)
 
-[How to add language support](/technical/add-langauge-plugin/)
+<a name="add-language-plugin"></a>[How to Support Another Language?](/technical/add-langauge-plugin/)

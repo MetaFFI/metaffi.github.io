@@ -32,9 +32,11 @@ Releases the loaded runtime. After calling this function, and loaded entity **mu
 
 Loads a foreign module from a given. It returns a `MetaFFIModule` object that represents the foreign module.
 
+The modulePath might contain multiple modules (for cases like dependencies). A runtime plugin **specifies** in its documentation what it expects.
+
 Parameters:
 
-- `module_path` - Path to the module to load
+- `module_path` - Path to the module(s) to load
 
 Return:
 
@@ -60,7 +62,7 @@ Parameters:
 
 #### `load(function_path: str, params_metaffi_types: List[metaffi_type_with_alias], retval_metaffi_types: List[metaffi_type_with_alias]) -> Callable[..., Tuple[Any, ...]]`
 
-The load method for the MetaFFIModule class loads a foreign entity from the module and returns a `Callable` that can be used to invoke the foreign entity from another language.
+The load method for the MetaFFIModule class loads a foreign entity from the module and returns a `Callable` that can be used to invoke the foreign entity from another language. If it `Callable` calls a Method or a Field of an object, the $1^{st}$ parameter is an instance of the object.
 
 The `load` method receives a [function path](/usage/function_path/) telling the runtime plugin the location of the entity inside the module.
 
@@ -81,48 +83,60 @@ Returns:
 
     In case of an error during the call, or an error in the foreign entity, the callable raises an exception containing the error message.
 
+## Callback
+
+### `make_metaffi_callable(f: Callable) -> Callable`
+
+The function wraps the given callable `f`, and returns a cross-language Callable. The returned Callable can be passed to other languages.
+
+Parameter:
+
+- `f`: a Python3 callable
+
+Return:
+
+- MetaFFI-enabled `Callable`
+
 ## MetaFFI Types In Python3
 
 | MetaFFI Type | Python3 |
 | :------------ | :------------: |
-| metaffi_float64_type | float |
-| metaffi_float32_type | float |
-| metaffi_int8_type | int |
-| metaffi_int16_type | int |
-| metaffi_int32_type | int |
-| metaffi_int64_type | int |
-| metaffi_uint8_type | int |
-| metaffi_uint16_type | int |
-| metaffi_uint32_type | int |
-| metaffi_uint64_type | int |
-| metaffi_bool_type | bool |
-| metaffi_char8_type | bytes |
-| metaffi_char16_type | bytes |
-| metaffi_char32_type | bytes |
-| metaffi_string8_type | str |
-| metaffi_string16_type | str |
-| metaffi_string32_type | str |
-| metaffi_handle_type | metaffi_handle |
-| metaffi_array_type | list |
-| metaffi_size_type | int |
-| metaffi_any_type | Any |
-| metaffi_null_type | None |
-| metaffi_callable_type | Callable<BR>(returned by `make_callable`) |
-| metaffi_float64_array_type | list |
-| metaffi_float32_array_type | list |
-| metaffi_int8_array_type | list |
-| metaffi_int16_array_type | list |
-| metaffi_int32_array_type | list |
-| metaffi_int64_array_type | list |
-| metaffi_uint8_array_type | list |
-| metaffi_uint16_array_type | list |
-| metaffi_uint32_array_type | list |
-| metaffi_uint64_array_type | list |
-| metaffi_bool_array_type | list |
-| metaffi_char8_array_type | list |
-| metaffi_string8_array_type | list |
-| metaffi_string16_array_type | list |
-| metaffi_string32_array_type | list |
-| metaffi_any_array_type | list |
-| metaffi_handle_array_type | list |
-| metaffi_size_array_type | list |
+| <span style="font-family: courier;">metaffi_float64_type</span> | <span style="font-family: courier;">float</span> |
+| <span style="font-family: courier;">metaffi_float32_type</span> | <span style="font-family: courier;">float</span> |
+| <span style="font-family: courier;">metaffi_int8_type</span> | <span style="font-family: courier;">int</span> |
+| <span style="font-family: courier;">metaffi_int16_type</span> | <span style="font-family: courier;">int</span> |
+| <span style="font-family: courier;">metaffi_int32_type</span> | <span style="font-family: courier;">int</span> |
+| <span style="font-family: courier;">metaffi_int64_type</span> | <span style="font-family: courier;">int</span> |
+| <span style="font-family: courier;">metaffi_uint8_type</span> | <span style="font-family: courier;">int</span> |
+| <span style="font-family: courier;">metaffi_uint16_type</span> | <span style="font-family: courier;">int</span> |
+| <span style="font-family: courier;">metaffi_uint32_type</span> | <span style="font-family: courier;">int</span> |
+| <span style="font-family: courier;">metaffi_uint64_type</span> | <span style="font-family: courier;">int</span> |
+| <span style="font-family: courier;">metaffi_bool_type</span> | <span style="font-family: courier;">bool</span> |
+| <span style="font-family: courier;">metaffi_char8_type</span> | <span style="font-family: courier;">bytes</span> |
+| <span style="font-family: courier;">metaffi_char16_type</span> | <span style="font-family: courier;">bytes</span> |
+| <span style="font-family: courier;">metaffi_char32_type</span> | <span style="font-family: courier;">bytes</span> |
+| <span style="font-family: courier;">metaffi_string8_type</span> | <span style="font-family: courier;">str</span> |
+| <span style="font-family: courier;">metaffi_string16_type</span> | <span style="font-family: courier;">str</span> |
+| <span style="font-family: courier;">metaffi_string32_type</span> | <span style="font-family: courier;">str</span> |
+| <span style="font-family: courier;">metaffi_handle_type</span> | <span style="font-family: courier;">metaffi_handle</span> |
+| <span style="font-family: courier;">metaffi_any_type</span> | <span style="font-family: courier;">Any</span> |
+| <span style="font-family: courier;">metaffi_null_type</span> | <span style="font-family: courier;">None</span> |
+| <span style="font-family: courier;">metaffi_callable_type</span> | <span style="font-family: courier;">Callable</span><BR>(returned by `make_callable`) |
+| <span style="font-family: courier;">metaffi_float64_array_type</span> | <span style="font-family: courier;">list</span> |
+| <span style="font-family: courier;">metaffi_float32_array_type</span> | <span style="font-family: courier;">list</span> |
+| <span style="font-family: courier;">metaffi_int8_array_type</span> |<span style="font-family: courier;"> list</span> |
+| <span style="font-family: courier;">metaffi_int16_array_type</span> | <span style="font-family: courier;">list</span> |
+| <span style="font-family: courier;">metaffi_int32_array_type</span> | <span style="font-family: courier;">list</span> |
+| <span style="font-family: courier;">metaffi_int64_array_type</span> | <span style="font-family: courier;">list</span> |
+| <span style="font-family: courier;">metaffi_uint8_array_type</span> | <span style="font-family: courier;">list</span> |
+| <span style="font-family: courier;">metaffi_uint16_array_type</span> | <span style="font-family: courier;">list</span> |
+| <span style="font-family: courier;">metaffi_uint32_array_type</span> | <span style="font-family: courier;">list</span> |
+| <span style="font-family: courier;">metaffi_uint64_array_type</span> | <span style="font-family: courier;">list</span> |
+| <span style="font-family: courier;">metaffi_bool_array_type</span> | <span style="font-family: courier;">list</span> |
+| <span style="font-family: courier;">metaffi_char8_array_type</span> | <span style="font-family: courier;">list</span> |
+| <span style="font-family: courier;">metaffi_string8_array_type</span> | <span style="font-family: courier;">list</span> |
+| <span style="font-family: courier;">metaffi_string16_array_type</span> | <span style="font-family: courier;">list</span> |
+| <span style="font-family: courier;">metaffi_string32_array_type</span> | <span style="font-family: courier;">list</span> |
+| <span style="font-family: courier;">metaffi_any_array_type</span> | <span style="font-family: courier;">list</span> |
+| <span style="font-family: courier;">metaffi_handle_array_type | <span style="font-family: courier;">list</span> |
+| <span style="font-family: courier;">metaffi_size_array_type</span> | <span style="font-family: courier;">list</span> |
