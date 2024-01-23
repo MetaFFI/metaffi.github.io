@@ -99,15 +99,17 @@ Loading entities from the “executable-code” of different runtimes is a commo
 
 MetaFFI addresses this limitation by providing a compiler that can generate entrypoints to the foreign entities automatically.
 
-To compile and generate entrypoints, simply run: 
-
+To compile and generate entrypoints, simply run:<br>
 `metaffi -c --idl [path] -g`
 
 **-c** - compile<br>
 **--idl** - path to source code to extract foreign entities signatures<br>
 **-g** - generate "guest code"
 
-For example, to build guest module for <p "font-family:courier;">TestRuntime.go</p>
+For example, to build guest module for TestRuntime.go:<br>
+`metaffi -c --idl TestRuntime.go -g`
+
+The command creates `TestRuntime_MetaFFIGuest.dll/.so/.dylib` (depends on the operating system) which the user can load a MetaFFI module and load the foreign entitity.
 
 ## Supported Langauges (for now)
 
@@ -128,10 +130,7 @@ For example, to build guest module for <p "font-family:courier;">TestRuntime.go<
 | Windows | From 7 | 10, 11 |
 | Ubuntu | 22.04 | 22.04 |
 
-
 * Lack of support is not due to system limitations, but time. If you like the project, consider to contribute and [add a new language support](add-language-plugin) 😊
-
-## License
 
 ## Technical Notes
 
@@ -146,6 +145,8 @@ For example, to build guest module for <p "font-family:courier;">TestRuntime.go<
 ## Technical Details
 
 [Terminology](/technical/terminology/)
+
+[Background](/technical/background/)
 
 [System Overview](/technical/system-overview/)
 
