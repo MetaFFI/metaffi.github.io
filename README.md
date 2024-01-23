@@ -95,6 +95,20 @@ The list of each runtime plugin is listed in the following links:
 
 ## Compiler
 
+Loading entities from the “executable-code” of different runtimes is a common functionality that many runtimes offer. For instance, the JVM can load entities from .jar or .class files, while the CPython can load entities from .py or .pyc files. However, this functionality is not universally available across all runtimes, and some runtimes require the creation of entrypoints to access the entities (e.g. `Go`).
+
+MetaFFI addresses this limitation by providing a compiler that can generate entrypoints to the foreign entities automatically.
+
+To compile and generate entrypoints, simply run: 
+
+`metaffi -c --idl [path] -g`
+
+**-c** - compile<br>
+**--idl** - path to source code to extract foreign entities signatures<br>
+**-g** - generate "guest code"
+
+For example, to build guest module for <p "font-family:courier;">TestRuntime.go</p>
+
 ## Supported Langauges (for now)
 
 |Language | Supported | Tested|
@@ -102,7 +116,6 @@ The list of each runtime plugin is listed in the following links:
 | Go | From v1.18 | v1.18 &rarr; v1.21.4 |
 | JVM Languages | JNI supported JVM | OpenJDK11 x64<br>Microsoft OpenJDK11 Hotspot JVM
 | Python3 | v3.11  | v3.11 |
-|
 
 * Note: Due to a [bug](https://github.com/golang/go/issues/58542) in Go, using Go &rarr; OpenJDK in **Windows**, causes the process to crash. Fix is expected in Go1.23. In the meantime, MetaFFI install provides a temporary patch to fix the issue.
 
@@ -114,9 +127,11 @@ The list of each runtime plugin is listed in the following links:
 |:---|:---:|:----:|
 | Windows | From 7 | 10, 11 |
 | Ubuntu | 22.04 | 22.04 |
-|
+
 
 * Lack of support is not due to system limitations, but time. If you like the project, consider to contribute and [add a new language support](add-language-plugin) 😊
+
+## License
 
 ## Technical Notes
 
