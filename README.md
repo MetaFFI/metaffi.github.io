@@ -18,6 +18,7 @@ Flags: <br>
 **/s** - silent mode, uses default installation.<br>
 **--skip-sanity** - skips all tests after installation<br>
 **--include-extended-tests** - runs extended tests after installation. Installs several 3rd party libraries for tests (e.g. beautiful soup and others)
+**--patched-go (windows only)** - Assume Go is patched and able to run Go -> OpenJDK tests (https://github.com/golang/go/issues/58542)
 
 ## GitHub Projects Links
 
