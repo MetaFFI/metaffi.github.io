@@ -12,7 +12,7 @@ There's no virtual machines of any sort. Each langauges runs in its own runtime,
 
 The installation is an all-in-one, cross-platform, Python3 script. Just download and run.
 
-Latest version [`v0.1.0`](https://github.com/MetaFFI/metaffi-core/releases/download/v0.1.0/metaffi_installer.py)
+Latest version [`v0.1.1`](https://github.com/MetaFFI/metaffi-core/releases/download/v0.1.1/metaffi_installer.py)
 
 Flags: <br>
 **/s** - silent mode, uses default installation.<br>
@@ -27,7 +27,7 @@ Flags: <br>
 
 [Python3 Plugin](https://github.com/MetaFFI/lang-plugin-python3)
 
-[OpenJDK Plugin](https://github.com/MetaFFI/lang-plugin-openjdk)
+[JVM Plugin](https://github.com/MetaFFI/lang-plugin-openjdk)
 
 [Go Plugin](https://github.com/MetaFFI/lang-plugin-go)
 
@@ -69,42 +69,34 @@ The API is a user-friendly wrapper to MetaFFI's XLLR (Cross-Language Link Runtim
 
 Detailed usage and documentation of the APIs for each of the plugins:
 
-[Python3](/usage/python3/)
-
-[Java Virtual Machine](/usage/jvm/)
-
-[Go](/usage/go/)
+[Python3](/usage/python3/), [Java Virtual Machine](/usage/jvm/), [Go](/usage/go/)
 
 ## Function Path
 
-*Function path* is a string describing the foreign entity in the loaded module.
+*Function path* refers to a string that represents the foreign entity within the loaded module.
 
-In `C`, for example, a module would be a `.so/.dll/.dylib` file, and function path would be the name of the exported function.
+For instance, in `C`, a module corresponds to a `.so/.dll/.dylib` file, and the function path corresponds to the name of the exported function.
 
-In other languages, or other entities beside function, just a name does not suffice. Therefore, function path is build of a list of key-value pairs or tags delimited by a comma: `key1=val1,tag1,...,...,tagN,keyN=valN`.
+However, in other languages or for other entities besides functions, a single name is insufficient. Hence, the function path consists of a list of key-value pairs or tags separated by commas: `key1=val1,tag1,...,...,tagN,keyN=valN`.
 
-Each plugin expects different keys and/tags. Although we try to keep the keys and tags similar across plugins, they are not identical.
+Each plugin requires different keys and tags. Although the keys and tags are similar across plugins, they are not identical.
 
-The list of each runtime plugin is listed in the following links:
+The following links provide the list of each runtime plugin:
 
-[Python3](/usage/function_path/python3/)
-
-[JVM](/usage/function_path/jvm/)
-
-[Go](/usage/function_path/go/)
+[Python3](/usage/function_path/python3/), [Java Virtual Machine](/usage/function_path/jvm/), [Go](/usage/function_path/go/)
 
 ## Compiler
 
-Loading entities from the “executable-code” of different runtimes is a common functionality that many runtimes offer. For instance, the JVM can load entities from .jar or .class files, while the CPython can load entities from .py or .pyc files. However, this functionality is not universally available across all runtimes, and some runtimes require the creation of entrypoints to access the entities (e.g. `Go`).
+Many runtimes enable the loading of entities from the "executable-code" of different runtimes. For example, the JVM can load entities from <span style="font-family:courier">.jar</span> or <span style="font-family:courier">.class</span> files, whereas the CPython can load entities from <span style="font-family:courier">.py</span> or <span style="font-family:courier">.pyc</span> files. Nevertheless, this functionality is not ubiquitous across all runtimes, and some runtimes necessitate the creation of entrypoints to access the entities (e.g. `Go`).
 
-MetaFFI addresses this limitation by providing a compiler that can generate entrypoints to the foreign entities automatically.
+MetaFFI overcomes this constraint by offering a compiler that can automatically generate entrypoints to the foreign entities.
 
 To compile and generate entrypoints, simply run:<br>
 `metaffi -c --idl [path] -g`
 
-**-c** - compile<br>
-**--idl** - path to source code to extract foreign entities signatures<br>
-**-g** - generate "guest code"
+<span style="font-family:courier">**-c**</span> - compile<br>
+<span style="font-family:courier">**--idl**</span> - path to source code to extract foreign entities signatures<br>
+<span style="font-family:courier">**-g**</span> - generate "guest code"
 
 For example, to build guest module for TestRuntime.go:<br>
 `metaffi -c --idl TestRuntime.go -g`
