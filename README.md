@@ -15,7 +15,7 @@ The installation is an all-in-one, cross-platform, Python3 script. Just download
 Latest version [`v0.1.1`](https://github.com/MetaFFI/metaffi-core/releases/download/v0.1.1/metaffi_installer.py)
 
 Flags: <br>
-**/s** - silent mode, uses default installation.<br>
+**-s** - silent mode, uses default installation.<br>
 **--skip-sanity** - skips all tests after installation<br>
 **--include-extended-tests** - runs extended tests after installation. Installs several 3rd party libraries for tests (e.g. beautiful soup and others)<br/>
 **--patched-go (windows only)** - Assume Go is patched and able to run Go -> OpenJDK tests (https://github.com/golang/go/issues/58542)
