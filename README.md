@@ -135,7 +135,7 @@ The command creates `TestRuntime_MetaFFIGuest.dll/.so/.dylib` (depends on the op
 
 **$CGO_ENABLED** must be set to 1 and **\$CGO_CFLAGS** must add $METAFFI_HOME as include directory for Go support. Installer sets the environment variables.
 
-## Technical Details
+## Technical Details (WIP)
 
 [Terminology](/technical/terminology/)
 
