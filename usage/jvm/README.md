@@ -71,13 +71,13 @@ Parameters:
 - `runtime`: A MetaFFIRuntime object that specifies the runtime plugin for the module.
 - `modulePath`: A string that contains the path to the module file.
 
-#### `Caller load(String functionPath, MetaFFITypeWithAlias[] parametersTypes, MetaFFITypeWithAlias[] retvalsTypes)`
+#### `Caller load(String entityPath, MetaFFITypeWithAlias[] parametersTypes, MetaFFITypeWithAlias[] retvalsTypes)`
 
-#### `Caller load(String functionPath, MetaFFIType[] parametersTypes, MetaFFIType[] retvalsTypes)`
+#### `Caller load(String entityPath, MetaFFIType[] parametersTypes, MetaFFIType[] retvalsTypes)`
 
 The load method for the MetaFFIModule class loads a foreign entity from the module and returns a `Caller` that can be used to invoke the foreign entity from another language. If the `Caller` calls a Method or a Field of an object, the $1^{st}$ parameter is an instance of the object.
 
-The `load` method receives a [function path](/README.md#function-path) telling the runtime plugin the location of the entity inside the module.
+The `load` method receives a [entity path](/README.md#entity-path) telling the runtime plugin the location of the entity inside the module.
 
 The method should also pass a list of [MetaFFI Types](/usage/metaffi_types/), specifying the type of the parameters and return values.
 
@@ -85,7 +85,7 @@ In case there are no parameters or return values, pass `null` or empty arrays.
 
 Parameters:
 
-- `functionPath`: A string that contains the path to the function within the module.
+- `entityPath`: A string that contains the path to the function within the module.
 - `parametersTypes`: MetaFFITypeWithAlias[] array that specify the parameter types for the function.
 - `retvalsTypes`: MetaFFITypeWithAlias[] array that specify the return value types for the function.
 

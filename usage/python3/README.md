@@ -60,21 +60,21 @@ Parameters:
 - `xllr`: An XllrWrapper object that provides the interface to [XLLR](/technical/xllr/) (Cross-Language Link Runtime).
 - `module_path`: A string that contains the path to the module file.
 
-#### `load(function_path: str, params_metaffi_types: List[metaffi_type_with_alias], retval_metaffi_types: List[metaffi_type_with_alias]) -> Callable[..., Tuple[Any, ...]]`
+#### `load_entity(entity_path: str, params_metaffi_types: List[metaffi_type_info], retval_metaffi_types: List[metaffi_type_info]) -> Callable[..., Tuple[Any, ...]]`
 
 The load method for the MetaFFIModule class loads a foreign entity from the module and returns a `Callable` that can be used to invoke the foreign entity from another language. If it `Callable` calls a Method or a Field of an object, the $1^{st}$ parameter is an instance of the object.
 
-The `load` method receives a [function path](/README.md#function-path) telling the runtime plugin the location of the entity inside the module.
+The `load` method receives a [entity path](/README.md#entity-path) telling the runtime plugin the location of the entity inside the module.
 
-The method should also pass a list of [MetaFFI Types](/usage/metaffi_types), specifying the type of the parameters and return values. `metaffi_type_with_alias` type is created by `new_metaffi_type_with_alias` function.
+The method should also pass a list of [MetaFFI Types](#metaffi-types-in-python3), specifying the type of the parameters and return values. `metaffi_type_info` type is created by `new_metaffi_type_info` function.
 
 In case there are no parameters or return values, pass `None` or empty `list`.
 
 Parameters:
 
-- `function_path`: A string that contains the path to the function within the module.
-- `params_metaffi_types`: A list of metaffi_type_with_alias objects that specify the parameter types for the function.
-- `retval_metaffi_types`: A list of metaffi_type_with_alias objects that specify the return value types for the function.
+- `entity_path`: A string that contains the path to the function within the module.
+- `params_metaffi_types`: A list of metaffi_type_info objects that specify the parameter types for the function.
+- `retval_metaffi_types`: A list of metaffi_type_info objects that specify the return value types for the function.
 
 Returns:
 

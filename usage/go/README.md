@@ -47,29 +47,29 @@ Return:
 
 ## MetaFFIModule Struct
 
-The MetaFFIModule struct provides the `Load` method, which loads a [foreign entity](/technical/terminology/) and returns it as a `func`.
+The MetaFFIModule struct provides the `Load` method, which loads a *foreign entity* and returns it as a `func`.
 
 The struct should not be created directly, but using the `MetaFFIRuntime.LoadModule` function.
 
 ### Methods
 
-#### `(this *MetaFFIModule) Load(functionPath string, paramsMetaFFITypes []MetaFFIType, retvalMetaFFITypes []MetaFFIType) (ff func(...interface{}) ([]interface{}, error), err error)`
+#### `(this *MetaFFIModule) Load(entityPath string, paramsMetaFFITypes []MetaFFIType, retvalMetaFFITypes []MetaFFIType) (ff func(...interface{}) ([]interface{}, error), err error)`
 
-#### `(this *MetaFFIModule) LoadWithAlias(functionPath string, paramsMetaFFITypes []MetaFFITypeWithAlias, retvalMetaFFITypes []MetaFFITypeWithAlias) (ff func(...interface{}) ([]interface{}, error), err error)`
+#### `(this *MetaFFIModule) LoadWithInfo(entityPath string, paramsMetaFFITypes []MetaFFITypeInfo, retvalMetaFFITypes []MetaFFITypeInfo) (ff func(...interface{}) ([]interface{}, error), err error)`
 
 The Load method in the MetaFFIModule struct loads a foreign entity from the module and returns a `func` that can be used to invoke the foreign entity in another language. If it `func` calls a Method or a Field of an object, the $1^{st}$ parameter is an instance of the object.
 
-The `Load` method receives a [function path](/README.md#function-path) telling the runtime plugin the location of the entity inside the module.
+The `Load` method receives a [entity path](/README.md#entity-path) telling the runtime plugin the location of the entity inside the module.
 
-The method should also pass a list of [MetaFFI Types](/usage/metaffi_types/), specifying the type of the parameters and return values. `Load` accepts `[]MetaFFIType`, if alias is also required, use  `LoadWithAlias` which accepts `[]MetaFFITypeWithAlias`.
+The method should also pass a list of [MetaFFI Types](/usage/metaffi_types/), specifying the type of the parameters and return values. `Load` accepts `[]MetaFFIType`, if alias is also required, use  `LoadWithInfo` which accepts `[]MetaFFITypeInfo`.
 
 In case there are no parameters or return values, pass `nil` or empty array.
 
 Parameters:
 
-* `functionPath`: A string that contains the path to the function within the module.
-* `paramsMetaFFITypes`: An array of `MetaFFIType` (or `MetaFFITypeWithAlias`) objects that specify the parameter types for the function.
-* `retvalMetaFFITypes`: An array of `MetaFFIType` (or `MetaFFITypeWithAlias`) objects that specify the return value types for the function.
+* `entityPath`: A string that contains the path to the function within the module.
+* `paramsMetaFFITypes`: An array of `MetaFFIType` (or `MetaFFITypeInfo`) objects that specify the parameter types for the function.
+* `retvalMetaFFITypes`: An array of `MetaFFIType` (or `MetaFFITypeInfo`) objects that specify the return value types for the function.
 
 Returns:
 
