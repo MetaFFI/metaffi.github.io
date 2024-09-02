@@ -13,7 +13,7 @@ There's no virtual machines of any sort. Each langauges runs in its own runtime,
 
 The installation is an all-in-one, cross-platform, Python3 script. Just download and run.
 
-Latest version [`v0.2.0`](https://github.com/MetaFFI/metaffi-root/releases/download/v0.2.0/metaffi_installer.py)
+Latest version [`v0.2.1`](https://github.com/MetaFFI/metaffi-root/releases/download/v0.2.1/metaffi_installer.py)
 
 Flags: <br>
 **-s** - silent mode, uses default installation.<br>
@@ -225,6 +225,12 @@ Each plugin requires different keys and tags. Although the keys and tags are sim
 The following links provide the list of each runtime plugin:
 
 [Python3](/usage/entity_path/python3/), [Java Virtual Machine](/usage/entity_path/jvm/), [Go](/usage/entity_path/go/)
+
+
+## Report a bug
+
+Found a bug? You can report it [here](https://github.com/MetaFFI/metaffi-root/issues/new).
+
 
 ## GitHub Projects
 
