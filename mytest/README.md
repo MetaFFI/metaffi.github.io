@@ -9,9 +9,9 @@
 </head>
 
 Choose a language:
-<div class="language-tabs">
-    <button id="python-tab" data-language="python" style="background-color: #f0f0f0; border: none; padding: 8px 16px; cursor: pointer">Python</button>
-    <button id="go-tab" data-language="go" style="background-color: #f0f0f0; border: none; padding: 8px 16px; cursor: pointer">Go</button>
+<div class="language-tabs" style="margin-bottom: 0;">
+    <button id="python-tab" data-language="python" style="background-color: #f0f0f0; border: none; padding: 8px 16px; cursor: pointer; border-top-left-radius: 10px; border-top-right-radius: 10px;">Python</button>
+    <button id="go-tab" data-language="go" style="background-color: #f0f0f0; border: none; padding: 8px 16px; cursor: pointer; border-top-left-radius: 10px; border-top-right-radius: 10px;">Go</button>
 </div>
 <pre><code id="code-block" class="language-python"></code></pre>
 
