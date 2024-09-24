@@ -121,32 +121,6 @@ runtime.release_runtime_plugin()
 
 More examples from [Python3](https://github.com/MetaFFI/lang-plugin-python3/tree/v0.2.0/api/tests), [Java](https://github.com/MetaFFI/lang-plugin-openjdk/tree/v0.2.0/api/tests) and [Go](https://github.com/MetaFFI/lang-plugin-go/tree/v0.2.0/api/tests).
 
-Choose a language:
-<select id="language-selector">
-    <option value="python">Python</option>
-    <option value="go">Go</option>
-</select>
-
-<pre><code id="code-block"></code></pre>
-
-<script>
-    const codeBlock = document.getElementById('code-block');
-    const languageSelector = document.getElementById('language-selector');
-
-    // Update code block based on selected language
-    languageSelector.addEventListener('change', () => {
-        const selectedLanguage = languageSelector.value;
-        if (selectedLanguage === 'python') {
-            codeBlock.textContent = `# Python code to call log4j\nimport logging\nlogging.basicConfig(level=logging.INFO)\nlogger = logging.getLogger(__name__)\nlogger.info("This is a log message from Python")`;
-        } else if (selectedLanguage === 'go') {
-            codeBlock.textContent = `// Go code to call log4j\npackage main\nimport (\n\t\"fmt\"\n\t\"github.com/sirupsen/logrus\"\n)\nfunc main() {\n\tlogrus.Info(\"This is a log message from Go\")\n}`;
-        }
-    });
-
-    // Initialize with Python code
-    languageSelector.value = 'python';
-    codeBlock.textContent = `# Python code to call log4j\nimport logging\nlogging.basicConfig(level=logging.INFO)\nlogger = logging.getLogger(__name__)\nlogger.info("This is a log message from Python")`;
-</script>
 
 ### Example using a compiler
 Some programming languages, like Go, need some help from MetaFFI to build a module available to other programming languages. For that, MetaFFI also provides a compiler to build a MetaFFI enabled module.
