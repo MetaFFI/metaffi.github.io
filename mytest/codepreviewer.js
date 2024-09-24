@@ -1,33 +1,41 @@
 const codeBlock = document.getElementById('code-block');
-const languageSelector = document.getElementById('language-selector');
+const languageTabs = document.querySelectorAll('.language-tabs button');
 
-// Update code block based on selected language
-languageSelector.addEventListener('change', async () => {
-    const selectedLanguage = languageSelector.value;
+// Handle tab click
+languageTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+        const selectedLanguage = tab.getAttribute('data-language');
+        loadCodeSnippet(selectedLanguage);
+        // Update active tab styling
+        languageTabs.forEach(t => t.classList.remove('active-tab'));
+        tab.classList.add('active-tab');
+    });
+});
+
+// Load code snippet based on selected language
+async function loadCodeSnippet(language) {
     try {
-        let filename;
-        switch (selectedLanguage) {
-            case 'python':
-                filename = 'log4j.py';
-                break;
-            case 'go':
-                filename = 'log4j.go';
-                break;
-            default:
-                console.error('Invalid language selection');
-                return;
-        }
-
-        const response = await fetch(filename);
+        const response = await fetch(getFilename(language));
         const codeSnippet = await response.text();
         codeBlock.textContent = codeSnippet;
-        codeBlock.className = `language-${selectedLanguage}`;
+        codeBlock.className = `language-${language}`;
         Prism.highlightElement(codeBlock); // Apply syntax highlighting
     } catch (error) {
         console.error('Error loading code:', error);
     }
-});
+}
 
 // Initialize with Python code
-languageSelector.value = 'python';
-languageSelector.dispatchEvent(new Event('change')); // Trigger initial load
+loadCodeSnippet('python');
+
+// Map language to filename
+function getFilename(language) {
+    switch (language) {
+        case 'python':
+            return 'log4j.py';
+        case 'go':
+            return 'log4j.go';
+        default:
+            return '';
+    }
+}
