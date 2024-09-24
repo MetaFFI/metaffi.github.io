@@ -5,12 +5,13 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/prism.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/components/prism-python.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/components/prism-go.min.js"></script>
+<link rel="stylesheet" href="codeblock.css">
 </head>
 
 Choose a language:
 <div class="language-tabs">
-    <button id="python-tab" class="active-tab" data-language="python">Python</button>
-    <button id="go-tab" data-language="go">Go</button>
+    <button id="python-tab" data-language="python" style="background-color: #f0f0f0; border: none; padding: 8px 16px; cursor: pointer">Python</button>
+    <button id="go-tab" data-language="go" style="background-color: #f0f0f0; border: none; padding: 8px 16px; cursor: pointer">Go</button>
 </div>
 <pre><code id="code-block" class="language-python"></code></pre>
 
