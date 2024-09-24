@@ -6,9 +6,28 @@ languageTabs.forEach(tab => {
     tab.addEventListener('click', () => {
         const selectedLanguage = tab.getAttribute('data-language');
         loadCodeSnippet(selectedLanguage);
+
         // Update active tab styling
-        languageTabs.forEach(t => t.classList.remove('active-tab'));
-        tab.classList.add('active-tab');
+        languageTabs.forEach(t => {
+            if (t === tab) {
+                t.classList.add('active-tab'); // Set the clicked tab as active
+            } else {
+                t.classList.remove('active-tab'); // Remove active class from other tabs
+                t.style.backgroundColor = '#f0f0f0';
+            }
+        });
+    });
+
+    // Add hover effect
+    tab.addEventListener('mouseenter', () => {
+        tab.style.backgroundColor = '#a4a4a4';
+    });
+
+    tab.addEventListener('mouseleave', () => {
+        // Only change background color if not active
+        if (!tab.classList.contains('active-tab')) {
+            tab.style.backgroundColor = '#f0f0f0';
+        }
     });
 });
 
