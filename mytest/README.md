@@ -8,4 +8,4 @@ Choose a language (!!!):
 
 <pre><code id="code-block"></code></pre>
 
-<script src="path/to/codepreviewer.js"></script>
+<script src="codepreviewer.js"></script>
