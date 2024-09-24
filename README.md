@@ -1,27 +1,30 @@
 # MetaFFI
 
-Have you ever wanted to use different programming languages together? With MetaFFI, you can do just that. Easily. MetaFFI lets you access functions, methods, fields, and even pass callbacks between programming languages.
+MetaFFI stands for Multilingual Indirect Interoperability System. It’s a clever solution to a common problem: how do we make different programming languages play nicely together? Each language has its strengths, and sometimes we need to harness those strengths in harmony. But—here comes the challenge—how do we get these languages to talk to each other seamlessly?
 
-MetaFFI works similar to loading a C function from a library, but it supports modules from multiple programming languages, and let you load multiple entities like methods, fields and more.
+MetaFFI employs a similar concept to loading libraries in C/C++, but it provides a layer that doesn't restrict to a specific runtime or binary, but any runtime. Once a module is loaded you can load entities from that module, weather it is a function, class, field and more. MetaFFI also allows you to pass callback functions of one language to other languages.
 
 How awesome is that?
 
-There's no virtual machines of any sort. Each langauges runs in its own runtime, communicating via C.
+There is no virtual machine envolved, and each langauges runs in its own original runtime. The system leverages existing Foregin Function Interface (FFI) and embedding mechanisms to link the runtimes together.
 
 
 ## Installation
 
-The installation is an all-in-one, cross-platform, Python3 script. Just download and run.
 
-Latest version [`v0.2.1`](https://github.com/MetaFFI/metaffi-root/releases/download/v0.2.1/metaffi_installer.py)
+MetaFFI system and runtime cross-platform Python3 installer: [`v0.3.0`](https://github.com/MetaFFI/metaffi-root/releases/download/v0.3.0/metaffi_installer.py)
 
-Flags: <br>
-**-s** - silent mode, uses default installation.<br>
-**--skip-sanity** - skips all tests after installation<br>
-**--include-extended-tests** - runs extended tests after installation. Installs several 3rd party libraries for tests (e.g. beautiful soup and others)<br/>
-**--patched-go (windows only)** - Assume Go is patched and able to run Go -> OpenJDK tests (https://github.com/golang/go/issues/58542)
+**-s**: silent mode, uses default installation directory.<br>
 
-### What does the installer do?
+
+
+### Plugin installers (Python3 installers):
+* [Python 3.11 plugin](https://github.com/MetaFFI/metaffi-root/releases/download/v0.3.0/metaffi_plugin_python311_installer.py) - to load Python3 modules
+* [Go plugin](https://github.com/MetaFFI/metaffi-root/releases/download/v0.3.0/metaffi_plugin_go_installer.py) - to load Go modules
+* [OpenJDK plugin](https://github.com/MetaFFI/metaffi-root/releases/download/v0.3.0/metaffi_plugin_openjdk_installer.py) - to load JVM modules
+
+
+### What does the MetaFFI installer do?
 #### Windows
 * Checks for prerequisites for current programming languages support
 	* Installer offers to install missing dependencies if somehthing is missing (automatic in silent mode)
@@ -47,9 +50,9 @@ Make sure to set `METAFFI_HOME` environment variable. You can set it in your app
 
 |Language | Supported | Tested|
 |:--------|:---------:|:-----:|
-| Go | From v1.18 | v1.18 &rarr; v1.21.4 |
-| JVM Languages | JNI supported JVM | OpenJDK11 x64<br>Microsoft OpenJDK11 Hotspot JVM
-| Python3 | v3.11  | v3.11 |
+| Go | From v1.22.7 | v1.18 &rarr; v1.23 |
+| JVM Languages | JNI supported JVM | OpenJDK11/21 x64<br>Microsoft OpenJDK11/21 Hotspot JVM
+| Python3.11 | v3.11  | v3.11.* |
 
 * Note: Due to a [bug](https://github.com/golang/go/issues/58542) in Go, using Go &rarr; OpenJDK in **Windows**, causes the process to crash. Fix is expected in Go1.23. In the meantime, MetaFFI install provides a temporary patch to fix the issue.
 
@@ -117,6 +120,33 @@ runtime.release_runtime_plugin()
 ```
 
 More examples from [Python3](https://github.com/MetaFFI/lang-plugin-python3/tree/v0.2.0/api/tests), [Java](https://github.com/MetaFFI/lang-plugin-openjdk/tree/v0.2.0/api/tests) and [Go](https://github.com/MetaFFI/lang-plugin-go/tree/v0.2.0/api/tests).
+
+Choose a language:
+<select id="language-selector">
+    <option value="python">Python</option>
+    <option value="go">Go</option>
+</select>
+
+<pre><code id="code-block"></code></pre>
+
+<script>
+    const codeBlock = document.getElementById('code-block');
+    const languageSelector = document.getElementById('language-selector');
+
+    // Update code block based on selected language
+    languageSelector.addEventListener('change', () => {
+        const selectedLanguage = languageSelector.value;
+        if (selectedLanguage === 'python') {
+            codeBlock.textContent = `# Python code to call log4j\nimport logging\nlogging.basicConfig(level=logging.INFO)\nlogger = logging.getLogger(__name__)\nlogger.info("This is a log message from Python")`;
+        } else if (selectedLanguage === 'go') {
+            codeBlock.textContent = `// Go code to call log4j\npackage main\nimport (\n\t\"fmt\"\n\t\"github.com/sirupsen/logrus\"\n)\nfunc main() {\n\tlogrus.Info(\"This is a log message from Go\")\n}`;
+        }
+    });
+
+    // Initialize with Python code
+    languageSelector.value = 'python';
+    codeBlock.textContent = `# Python code to call log4j\nimport logging\nlogging.basicConfig(level=logging.INFO)\nlogger = logging.getLogger(__name__)\nlogger.info("This is a log message from Python")`;
+</script>
 
 ### Example using a compiler
 Some programming languages, like Go, need some help from MetaFFI to build a module available to other programming languages. For that, MetaFFI also provides a compiler to build a MetaFFI enabled module.
@@ -212,7 +242,7 @@ var arr = testMapGet.call(testMap, "key");
 ArrayList<String> list = (ArrayList<String>)arr[0];
 ```
 
-## Entity Path
+## Finding a foreign entity - Entity Path
 
 *Entity path* refers to a string that represents the foreign entity within the loaded module.
 
@@ -226,6 +256,15 @@ The following links provide the list of each runtime plugin:
 
 [Python3](/usage/entity_path/python3/), [Java Virtual Machine](/usage/entity_path/jvm/), [Go](/usage/entity_path/go/)
 
+
+## Bridging Language Boundaries - MetaFFI *XCall* and Capabilities-based calling convension
+The XCall is the mechanism MetaFFI uses to facilitate cross-language calls. MetaFFI's agnostic approach ensures that each language remains unaware of the others, allowing for independent plugin development.
+
+XCall is a runtime-independent calling convention that uses Common Data Types (inspired by Microsoft's Variant and GTK gObject) to enable languages to call and use entities in other languages, even if they lack certain features. While the generic calling convention supports a wide range of cross-language calls, it can affect the performance. </br>Therefore, XCall determines the calling convention used at runtime, based on the required capabilities. This allows MetaFFI to use the full-featured calling convention when necessary, a subset of the capabilities to improve performance, or revert completely to a direct function call when possible (like x64 calling convension), resulting in efficient cross-language interactions.
+
+For more details, please refer to the MetaFFI paper.
+
+Note: The current version of MetaFFI always chooses the generic calling convention due to the differences between the initial languages implemented.
 
 ## Report a bug
 
