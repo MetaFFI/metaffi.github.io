@@ -12,23 +12,48 @@ There is no virtual machine envolved, and each langauges runs in its own origina
 ## Installation
 
 
-MetaFFI system and runtime cross-platform Python3 installer: [`v0.3.0`](https://github.com/MetaFFI/metaffi-root/releases/download/v0.3.0/metaffi_installer.py)
+Installer is available at:
 
-**-s**: silent mode, uses default installation directory.<br>
+[`v0.3.0 - Windows`](https://github.com/MetaFFI/metaffi-root/releases/download/v0.3.0/metaffi-installer-0.3.0.exe)
+[`v0.3.0 - Ubuntu`](https://github.com/MetaFFI/metaffi-root/releases/download/v0.3.0/metaffi-installer-0.3.0)
 
+**-s**: To install in silent mode with default installation directory.<br>
+
+To uninstall, execute _uninstall_ executable in the installation directory.
+
+Installers tested on: Windows 11, Windows Server 2022, Ubuntu 22.04
+
+Windows CMD: `curl -LO https://github.com/MetaFFI/metaffi-root/releases/download/v0.3.0/metaffi-installer-0.3.0.exe && metaffi-installer-0.3.0.exe -s`
+
+Windows PowerShell: `Invoke-WebRequest -Uri https://github.com/MetaFFI/metaffi-root/releases/download/v0.3.0/metaffi-installer-0.3.0.exe -OutFile metaffi-installer.exe; Start-Process .\metaffi-installer.exe -ArgumentList '-s' -Wait`
+
+Ubuntu bash: `wget https://github.com/MetaFFI/metaffi-root/releases/download/v0.3.0/metaffi-installer-0.3.0 && chmod +x metaffi-installer-0.3.0 && ./metaffi-installer-0.3.0 -s`
 
 
 ### Plugin installers (Python3 installers):
-* [Python 3.11 plugin](https://github.com/MetaFFI/metaffi-root/releases/download/v0.3.0/metaffi_plugin_python311_installer.py) - to load Python3 modules
-* [Go plugin](https://github.com/MetaFFI/metaffi-root/releases/download/v0.3.0/metaffi_plugin_go_installer.py) - to load Go modules
-* [OpenJDK plugin](https://github.com/MetaFFI/metaffi-root/releases/download/v0.3.0/metaffi_plugin_openjdk_installer.py) - to load JVM modules
+* Python 3 - [Windows](https://github.com/MetaFFI/metaffi-root/releases/download/v0.3.0/metaffi-plugin-installer-0.3.0-python311.exe), [Ubuntu](https://github.com/MetaFFI/metaffi-root/releases/download/v0.3.0/metaffi-plugin-installer-0.3.0-python311)
+	* PIP package is available at `pip3 install metaffi-api`
+	* Tested with Python 3.11
+    * Should work with Python >=3.11, but not tested with installer
+    * Should work with Python <3.10, but not tested
+* Go - [Windows](https://github.com/MetaFFI/metaffi-root/releases/download/v0.3.0/metaffi-plugin-installer-0.3.0-python311.exe), [Ubuntu](https://github.com/MetaFFI/metaffi-root/releases/download/v0.3.0/metaffi-plugin-installer-0.3.0-python311)
+  * Currently, supports Go 1.23.1 - will be support any go version in near future
+* OpenJDK - [Windows](https://github.com/MetaFFI/metaffi-root/releases/download/v0.3.0/metaffi-plugin-installer-0.3.0-openjdk.exe), [Ubuntu](https://github.com/MetaFFI/metaffi-root/releases/download/v0.3.0/metaffi-plugin-installer-0.3.0-openjdk)
+	* JAR ships with the installer
+    * Tested with OpenJDK 21
+    * Tested with OpenJDK 11 without testing installer
 
+Windows CMD: `curl -LO https://github.com/MetaFFI/metaffi-root/releases/download/v0.3.0/metaffi-plugin-installer-0.3.0-python311.exe && metaffi-plugin-installer-0.3.0-python311.exe && curl -LO https://github.com/MetaFFI/metaffi-root/releases/download/v0.3.0/metaffi-plugin-installer-0.3.0-openjdk.exe && metaffi-plugin-installer-0.3.0-openjdk.exe`
+
+Windows PowerShell: `Invoke-WebRequest https://github.com/MetaFFI/metaffi-root/releases/download/v0.3.0/metaffi-plugin-installer-0.3.0-python311.exe -OutFile python311.exe; Start-Process .\python311.exe -Wait; Invoke-WebRequest https://github.com/MetaFFI/metaffi-root/releases/download/v0.3.0/metaffi-plugin-installer-0.3.0-openjdk.exe -OutFile openjdk.exe; Start-Process .\openjdk.exe -Wait`
+
+Ubuntu bash: `wget https://github.com/MetaFFI/metaffi-root/releases/download/v0.3.0/metaffi-plugin-installer-0.3.0-python311 -O python311 && chmod +x python311 && ./python311 && wget https://github.com/MetaFFI/metaffi-root/releases/download/v0.3.0/metaffi-plugin-installer-0.3.0-openjdk -O openjdk && chmod +x openjdk && ./openjdk`
 
 ### What does the MetaFFI installer do?
 #### Windows
 * Checks for prerequisites for current programming languages support
 	* Installer offers to install missing dependencies if somehthing is missing (automatic in silent mode)
-* Copies the MetaFFI files to installation directory (default is `c:\metaffi`)
+* Copies the MetaFFI files to installation directory (default is `%USERPROFILE%\metaffi`)
 * Add installation directory to PATH environment variables
 * Adds `METAFFI_HOME` environment variable pointing at the installation directory
 
@@ -36,10 +61,11 @@ MetaFFI system and runtime cross-platform Python3 installer: [`v0.3.0`](https://
 * Checks for prerequisites for current programming languages support
 	* Installer offers to install missing dependencies if somehthing is missing (automatic in silent mode)
 * Copies the MetaFFI files to installation directory (default is `/usr/local/metaffi`)
-* Adds `METAFFI_HOME` environment variable to `/etc/environment` pointing at the installation directory 
+* Adds `METAFFI_HOME` environment variable to `~/.profile` pointing at the installation directory 
 
 ## Pre-Installed Docker Container
-You can use a pre-installed MetaFFI container based on Ubuntu 22.04 at `metaffi/metaffi-u2204:latest`
+Ubuntu 22.04: `docker pull tscs/metaffi-u2204:0.3.0`
+Windows server core 2022: `docker pull tscs/metaffi-win-core2022:0.3.0`
 
 ## Distribute Binaries
 You can distribute MetaFFI binaries with your application (under the license terms). To use MetaFFI on the target machine, you can either install MetaFFI using the installer, or place the MetaFFI directory (without the executable) within your application directory.
@@ -48,11 +74,11 @@ Make sure to set `METAFFI_HOME` environment variable. You can set it in your app
 
 ## (Currently) Supported Programming Langauges
 
-|Language | Supported | Tested|
-|:--------|:---------:|:-----:|
-| Go | From v1.22.7 | v1.18 &rarr; v1.23 |
-| JVM Languages | JNI supported JVM | OpenJDK11/21 x64<br>Microsoft OpenJDK11/21 Hotspot JVM
-| Python3.11 | v3.11  | v3.11.* |
+|Language |     Supported     |              Fully Tested With Installer               |
+|:--------|:-----------------:|:------------------------------------------------------:|
+| Go |   From v1.22.7    |                   v1.18 &rarr; v1.23                   |
+| JVM Languages | JNI supported JVM | OpenJDK11/21 x64<br>Microsoft OpenJDK11/21 Hotspot JVM 
+| Python3 |       v3.x        |                         v3.11                          |
 
 * Note: Due to a [bug](https://github.com/golang/go/issues/58542) in Go, using Go &rarr; OpenJDK in **Windows**, causes the process to crash. Fix is expected in Go1.23. In the meantime, MetaFFI install provides a temporary patch to fix the issue.
 
@@ -60,25 +86,29 @@ Make sure to set `METAFFI_HOME` environment variable. You can set it in your app
 
 ## (Currently) Supported Operating Systems
 
-| Operating System | Supported Versions | Regularly Tested |
-|:---|:---:|:----:|
-| Windows | From 7 | 11 |
-| Ubuntu | From 20.04 | 22.04 |
+| Operating System | Supported Versions | Tested with installer |
+|:---|:------------------:|:---------------------:|
+| Windows |         >7         |          11           |
+| Ubuntu |       >20.04       |         22.04         |
 
 * Lack of support is not due to system limitations, but time. If you like the project, consider to contribute and [add a new language support](add-language-plugin) 😊
 
 ## Build From Source
-MetaFFI uses Python-based [SCons](https://scons.org/) build system and [Conan](https://conan.io/) package manager to build MetaFFI.
+MetaFFI uses `CMake` build system and `vcpkg` for dependency management.
+The build system is cross-platform and should work on any platform supported by CMake.
 
-* Make sure you have at least Python3.10 installed
-* Clone `github.com/MetaFFI/metaffi-root` 
-* Install MetaFFI build prerequisites using `pip` and the provided `requirements.txt` using the command `pip install -r requirements.txt`.
-* Type `scons --print-aliases` to see the available build options.
-	* Notice, the first time you run "scons", it will clone the MetaFFI projects and download missing conan package
-	* To build and test everything, type `scons build-and-test`
+Author uses CLion IDE for the core development, but you can use any IDE that supports CMake.
 
-## Visual Studio Code Dev Container
-The `github.com/MetaFFI/metaffi-root` repository provides Ubuntu 22.04 `devcontainer.json` to develop within a docker container.
+1. Install CMake and VCPKG
+2. Pull https://github.com/MetaFFI/metaffi-root
+3. Run the CMake configuration and build
+4. CMake script will pull the required dependencies
+
+The GitHub project contains:
+* MetaFFI Core
+* Python3 Plugin
+* JVM Plugin
+* Go Plugin
 
 ## MetaFFI Paper
 The paper ([link](https://arxiv.org/abs/2408.14175)) discusses the research and internals of MetaFFI. Sections for academic audiance or technical audiance are explicitly marked, as explained in the end of the introduction section.
