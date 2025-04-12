@@ -36,18 +36,18 @@ Ubuntu bash: `wget https://github.com/MetaFFI/metaffi-root/releases/download/v0.
 	* Tested with Python 3.11
     * Should work with Python >=3.11, but not tested with installer
     * Should work with Python <3.10, but not tested
-* Go - [Windows](https://github.com/MetaFFI/metaffi-root/releases/download/v0.3.0/metaffi-plugin-installer-0.3.0-python311.exe), [Ubuntu](https://github.com/MetaFFI/metaffi-root/releases/download/v0.3.0/metaffi-plugin-installer-0.3.0-python311)
+* Go - [Windows](https://github.com/MetaFFI/metaffi-root/releases/download/v0.3.0/metaffi-plugin-installer-0.3.0-go.exe), [Ubuntu](https://github.com/MetaFFI/metaffi-root/releases/download/v0.3.0/metaffi-plugin-installer-0.3.0-go)
   * Currently, supports Go 1.23.1 - will be support any go version in near future
 * OpenJDK - [Windows](https://github.com/MetaFFI/metaffi-root/releases/download/v0.3.0/metaffi-plugin-installer-0.3.0-openjdk.exe), [Ubuntu](https://github.com/MetaFFI/metaffi-root/releases/download/v0.3.0/metaffi-plugin-installer-0.3.0-openjdk)
 	* JAR ships with the installer
     * Tested with OpenJDK 21
     * Tested with OpenJDK 11 without testing installer
 
-Windows CMD: `curl -LO https://github.com/MetaFFI/metaffi-root/releases/download/v0.3.0/metaffi-plugin-installer-0.3.0-python311.exe && metaffi-plugin-installer-0.3.0-python311.exe && curl -LO https://github.com/MetaFFI/metaffi-root/releases/download/v0.3.0/metaffi-plugin-installer-0.3.0-openjdk.exe && metaffi-plugin-installer-0.3.0-openjdk.exe`
+Windows CMD: `curl -LO https://github.com/MetaFFI/metaffi-root/releases/download/v0.3.0/metaffi-plugin-installer-0.3.0-python311.exe && metaffi-plugin-installer-0.3.0-python311.exe && curl -LO https://github.com/MetaFFI/metaffi-root/releases/download/v0.3.0/metaffi-plugin-installer-0.3.0-go.exe && metaffi-plugin-installer-0.3.0-go.exe && curl -LO https://github.com/MetaFFI/metaffi-root/releases/download/v0.3.0/metaffi-plugin-installer-0.3.0-openjdk.exe && metaffi-plugin-installer-0.3.0-openjdk.exe`
 
-Windows PowerShell: `Invoke-WebRequest https://github.com/MetaFFI/metaffi-root/releases/download/v0.3.0/metaffi-plugin-installer-0.3.0-python311.exe -OutFile python311.exe; Start-Process .\python311.exe -Wait; Invoke-WebRequest https://github.com/MetaFFI/metaffi-root/releases/download/v0.3.0/metaffi-plugin-installer-0.3.0-openjdk.exe -OutFile openjdk.exe; Start-Process .\openjdk.exe -Wait`
+Windows PowerShell: `Invoke-WebRequest https://github.com/MetaFFI/metaffi-root/releases/download/v0.3.0/metaffi-plugin-installer-0.3.0-python311.exe -OutFile python311.exe; Start-Process .\python311.exe -Wait; Invoke-WebRequest https://github.com/MetaFFI/metaffi-root/releases/download/v0.3.0/metaffi-plugin-installer-0.3.0-go.exe -OutFile go.exe; Start-Process .\go.exe -Wait; Invoke-WebRequest https://github.com/MetaFFI/metaffi-root/releases/download/v0.3.0/metaffi-plugin-installer-0.3.0-openjdk.exe -OutFile openjdk.exe; Start-Process .\openjdk.exe -Wait`
 
-Ubuntu bash: `wget https://github.com/MetaFFI/metaffi-root/releases/download/v0.3.0/metaffi-plugin-installer-0.3.0-python311 -O python311 && chmod +x python311 && ./python311 && wget https://github.com/MetaFFI/metaffi-root/releases/download/v0.3.0/metaffi-plugin-installer-0.3.0-openjdk -O openjdk && chmod +x openjdk && ./openjdk`
+Ubuntu bash: `wget https://github.com/MetaFFI/metaffi-root/releases/download/v0.3.0/metaffi-plugin-installer-0.3.0-python311 -O python311 && chmod +x python311 && ./python311 && wget https://github.com/MetaFFI/metaffi-root/releases/download/v0.3.0/metaffi-plugin-installer-0.3.0-go -O go && chmod +x go && ./go && wget https://github.com/MetaFFI/metaffi-root/releases/download/v0.3.0/metaffi-plugin-installer-0.3.0-openjdk -O openjdk && chmod +x openjdk && ./openjdk`
 
 ### What does the MetaFFI installer do?
 #### Windows
