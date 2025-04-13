@@ -30,7 +30,7 @@ Windows PowerShell: `Invoke-WebRequest -Uri https://github.com/MetaFFI/metaffi-r
 Ubuntu bash: `wget https://github.com/MetaFFI/metaffi-root/releases/download/v0.3.0/metaffi-installer-0.3.0 && chmod +x metaffi-installer-0.3.0 && ./metaffi-installer-0.3.0 -s`
 
 
-### Plugin installers (Python3 installers):
+### Plugin installers:
 * Python 3 - [Windows](https://github.com/MetaFFI/metaffi-root/releases/download/v0.3.0/metaffi-plugin-installer-0.3.0-python311.exe), [Ubuntu](https://github.com/MetaFFI/metaffi-root/releases/download/v0.3.0/metaffi-plugin-installer-0.3.0-python311)
 	* PIP package is available at `pip3 install metaffi-api`
 	* Tested with Python 3.11
