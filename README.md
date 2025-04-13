@@ -1,10 +1,14 @@
-MetaFFI stands for Multilingual Indirect Interoperability System. It’s a clever solution to a common problem: how do we make different programming languages play nicely together? Each language has its strengths, and sometimes we need to harness those strengths in harmony. But—here comes the challenge—how do we get these languages to talk to each other seamlessly?
+MetaFFI is a Multilingual Indirect Interoperability System. It’s a clever solution to a common problem: how do we make different programming languages play nicely together?
 
-MetaFFI employs a similar concept to loading libraries in C/C++, but it provides a layer that doesn't restrict to a specific runtime or binary, but any runtime. Once a module is loaded you can load entities from that module, weather it is a function, class, field and more. MetaFFI also allows you to pass callback functions of one language to other languages.
+Each language has its strengths, and sometimes we need to harness those strengths in harmony. But here comes the challenge, how do we get these languages to talk to each other without all the low-level hassle?
 
-How awesome is that?
+MetaFFI uses the concept of loading and using dynamic libraries, but expands it to any programming language module. Not just binary.
+It can be a Python package, a Go module, or even a Java class.
 
-There is no virtual machine envolved, and each langauges runs in its own original runtime. The system leverages existing Foregin Function Interface (FFI) and embedding mechanisms to link the runtimes together.
+To be a bit more technical, MetaFFI uses Foreign Function Interface (FFI) and embedding mechanisms to link the runtimes together using a C-based Hub.
+It’s like a bridge that connects different programming languages, allowing them to communicate and share data.
+
+There is no virtual machine, interpreters or re-compilation envolved - each programming language runs in its own original runtime.
 
 
 ## Installation
