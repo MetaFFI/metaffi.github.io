@@ -2,6 +2,23 @@ remote_theme: mmistakes/minimal-mistakes
 plugins:
   - jekyll-remote-theme
   - jekyll-include-cache
-title: MetaFFI
-description: Multi-Lingual Interoperability System
+title: MetaFFI - Multi-Lingual Interoperability System
 url: https://github.com/MetaFFI/
+minimal_mistakes_skin: dark
+
+# Enable ToC for all pages and posts
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: single
+      toc: true
+      toc_sticky: true
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: single
+      toc: true
+      toc_sticky: true
