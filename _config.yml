@@ -1,6 +1,6 @@
-remote_theme: pages-themes/midnight@v0.2.0
+remote_theme: mmistakes/minimal-mistakes
 plugins:
-- jekyll-remote-theme
+  - jekyll-remote-theme
 title: MetaFFI
 description: Multi-Lingual Interoperability System
 url: https://github.com/MetaFFI/
