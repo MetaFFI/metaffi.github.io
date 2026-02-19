@@ -1,0 +1,15 @@
+main:
+  - title: "Home"
+    url: /
+  - title: "Getting Started"
+    url: /getting-started/
+  - title: "Examples"
+    url: /examples/
+  - title: "Performance"
+    url: /performance/
+  - title: "API Reference"
+    url: /api-reference/
+  - title: "Entity Path"
+    url: /entity-path/
+  - title: "Paper"
+    url: /paper/
