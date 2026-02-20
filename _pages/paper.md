@@ -7,11 +7,13 @@ toc_sticky: true
 
 ## MetaFFI: A Multi-Lingual Indirect Interoperability System
 
-The MetaFFI paper, published in the MDPI *Languages* journal, discusses the research, design, and internals of the system. It covers the architecture, the XCall calling convention, Common Data Types, and the plugin system.
+The MetaFFI paper, published in the MDPI *Software* journal, discusses the research, design, and internals of the system. It covers the architecture, the XCall calling convention, Common Data Types, and the plugin system.
 
 Sections for academic audience or technical audience are explicitly marked, as explained at the end of the introduction section.
 
 [Read the paper](https://www.mdpi.com/2674-113X/4/3/21){: .btn .btn--primary .btn--large}
+
+For practical usage, see the [Getting Started](/getting-started/) guide, [Examples](/examples/), and [Host Compiler](/host-compiler/) documentation.
 
 ## XCall: Capabilities-Based Calling Convention
 

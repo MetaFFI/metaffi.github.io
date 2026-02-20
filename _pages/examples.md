@@ -75,7 +75,7 @@ func (this *TestMap) Contains(k string) bool {
 }
 ```
 
-Compile: `metaffi -c --idl TestMap.go -g`
+Compile: `metaffi -c --idl TestMap.go -g go`
 
 **Java host code:**
 
@@ -173,7 +173,9 @@ func Add(a, b int64) int64 {
 }
 ```
 
-Compile: `metaffi -c --idl mathutil.go -g`
+Compile: `metaffi -c --idl mathutil.go -g go`
+
+### Dynamic Loading
 
 ```python
 from metaffi import MetaFFIRuntime, MetaFFITypes
@@ -193,6 +195,25 @@ print(result)  # 7
 
 runtime.release_runtime_plugin()
 ```
+
+### With Generated Stubs
+
+Generate typed Python stubs, then call directly:
+
+```bash
+metaffi -c --idl mathutil.go -h python3
+```
+
+```python
+import mathutil_MetaFFIHost as mathutil
+
+mathutil.bind_module_to_code("mathutil_MetaFFIGuest", "go")
+
+result = mathutil.Add(3, 4)
+print(result)  # 7
+```
+
+No entity paths. No type arrays. See the [Host Compiler](/host-compiler/) page for the full workflow.
 
 ## Java Calling Python
 

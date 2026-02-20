@@ -5,6 +5,9 @@ toc: true
 toc_sticky: true
 ---
 
+**Note:** Entity paths are used in **dynamic loading** mode. If you use the [host compiler](/host-compiler/) to generate typed stubs, entity paths are generated for you — you do not need to write them by hand.
+{: .notice--info}
+
 An *entity path* is a string that tells MetaFFI where to find a specific entity (function, method, field, constructor) within a loaded module.
 
 The entity path consists of key-value pairs and tags separated by commas:

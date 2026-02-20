@@ -1,0 +1,100 @@
+<style>
+.metaffi-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+  margin-bottom: 0;
+  border-bottom: 2px solid #444;
+}
+
+.metaffi-tab {
+  padding: 0.6em 1.2em;
+  background: transparent;
+  color: #aaa;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  font-size: 0.95em;
+  font-family: inherit;
+  margin-bottom: -2px;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.metaffi-tab:hover {
+  color: #ddd;
+}
+
+.metaffi-tab:focus-visible {
+  outline: 2px solid #79b8ff;
+  outline-offset: -2px;
+}
+
+.metaffi-tab[aria-selected="true"] {
+  color: #fff;
+  border-bottom-color: #79b8ff;
+  font-weight: 600;
+}
+
+.metaffi-tabpanel {
+  padding: 1em 0 0 0;
+}
+
+.metaffi-tabpanel[hidden] {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .metaffi-tab {
+    padding: 0.5em 0.8em;
+    font-size: 0.85em;
+  }
+}
+</style>
+
+<script>
+(function() {
+  function initTabs() {
+    document.querySelectorAll('[role="tablist"]').forEach(function(tablist) {
+      var tabs = tablist.querySelectorAll('[role="tab"]');
+      tabs.forEach(function(tab) {
+        tab.addEventListener('click', function() {
+          tabs.forEach(function(t) {
+            t.setAttribute('aria-selected', 'false');
+            t.tabIndex = -1;
+          });
+          tabs.forEach(function(t) {
+            var panel = document.getElementById(t.getAttribute('aria-controls'));
+            if (panel) panel.hidden = true;
+          });
+          tab.setAttribute('aria-selected', 'true');
+          tab.tabIndex = 0;
+          var panel = document.getElementById(tab.getAttribute('aria-controls'));
+          if (panel) panel.hidden = false;
+        });
+
+        tab.addEventListener('keydown', function(e) {
+          var tabArr = Array.from(tabs);
+          var idx = tabArr.indexOf(tab);
+          var next;
+          if (e.key === 'ArrowRight') {
+            next = tabArr[(idx + 1) % tabArr.length];
+          } else if (e.key === 'ArrowLeft') {
+            next = tabArr[(idx - 1 + tabArr.length) % tabArr.length];
+          }
+          if (next) {
+            next.click();
+            next.focus();
+            e.preventDefault();
+          }
+        });
+      });
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initTabs);
+  } else {
+    initTabs();
+  }
+})();
+</script>

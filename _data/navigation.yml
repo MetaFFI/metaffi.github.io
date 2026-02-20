@@ -3,6 +3,8 @@ main:
     url: /
   - title: "Getting Started"
     url: /getting-started/
+  - title: "Host Compiler"
+    url: /host-compiler/
   - title: "Examples"
     url: /examples/
   - title: "Performance"

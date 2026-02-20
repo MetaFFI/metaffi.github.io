@@ -76,9 +76,21 @@ curl -LO https://github.com/MetaFFI/metaffi-root/releases/download/v0.3.0/metaff
 wget https://github.com/MetaFFI/metaffi-root/releases/download/v0.3.0/metaffi-plugin-installer-0.3.0-python311 -O python311 && chmod +x python311 && ./python311 && wget https://github.com/MetaFFI/metaffi-root/releases/download/v0.3.0/metaffi-plugin-installer-0.3.0-go -O go && chmod +x go && ./go && wget https://github.com/MetaFFI/metaffi-root/releases/download/v0.3.0/metaffi-plugin-installer-0.3.0-openjdk -O openjdk && chmod +x openjdk && ./openjdk
 ```
 
+## Choose Your Workflow
+
+MetaFFI supports two ways to call foreign code:
+
+| | Dynamic Loading | Generated Stubs (Host Compiler) |
+|:---|:----------------|:-------------------------------|
+| **How** | Load modules and entities at runtime using the MetaFFI API | Generate typed wrappers with `metaffi -c --idl <file> -h <lang>` |
+| **Best for** | Exploration, quick scripts, prototyping | Production codebases, large projects, CI |
+| **Entity paths** | Written by hand | Generated for you |
+
+The tutorial below uses **dynamic loading**. For the generated stubs workflow, see the [Host Compiler](/host-compiler/) page.
+
 ## Your First Cross-Language Call
 
-This example calls a Go function from Python.
+This example calls a Go function from Python using dynamic loading.
 
 ### 1. Create the Go module
 
@@ -101,6 +113,16 @@ metaffi -c --idl hello.go -g
 ```
 
 This produces a MetaFFI-enabled dynamic library (`hello_MetaFFIGuest.dll` on Windows, `.so` on Linux).
+
+### Optional: Generate Typed Stubs
+
+Instead of writing entity paths and type arrays by hand, you can generate typed Python stubs:
+
+```bash
+metaffi -c --idl hello.go -h python3
+```
+
+This produces `hello_MetaFFIHost.py` — a typed Python module you can import and call directly. See the [Host Compiler](/host-compiler/) page for details.
 
 ### 3. Call from Python
 

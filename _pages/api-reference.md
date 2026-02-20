@@ -32,3 +32,31 @@ All three APIs follow the same pattern:
 ```
 
 The [Entity Path](/entity-path/) documentation describes how to specify the location of entities within each language's modules.
+
+## Two Usage Modes
+
+MetaFFI offers two ways to call foreign code:
+
+### Dynamic API Calls
+
+Use the API directly — load a runtime, load a module, load an entity by its [entity path](/entity-path/), and call it. This is the pattern shown above and throughout the [Examples](/examples/) page.
+
+Best for: exploration, quick scripts, prototyping.
+
+### Generated Wrappers (Host Compiler)
+
+Use the [host compiler](/host-compiler/) to generate typed wrappers that call the API for you. The generated module exposes normal typed functions — no entity paths or type arrays in your application code.
+
+```bash
+metaffi -c --idl hello.go -h python3
+```
+
+```python
+import hello_MetaFFIHost as hello
+hello.bind_module_to_code("hello_MetaFFIGuest", "go")
+result = hello.SayHello("Python")
+```
+
+Best for: production codebases, large projects, CI.
+
+Generated wrappers do not change runtime overhead — they wrap the same API calls shown above. See the [Host Compiler](/host-compiler/) page for details.

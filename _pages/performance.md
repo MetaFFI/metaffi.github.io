@@ -103,4 +103,6 @@ Each language pair was tested across 11 scenarios:
 - All benchmarks run on the same machine in sequence
 - Environment: Windows 11, Go 1.23, OpenJDK 22, Python 3.11
 
+**Note on generated stubs:** The [host compiler](/host-compiler/) generates thin wrapper functions that call the same MetaFFI runtime. Using generated stubs does not change runtime overhead — it changes developer experience only. The benchmarks above apply equally to both dynamic loading and generated stub modes.
+
 For full details, see the [MetaFFI paper](https://www.mdpi.com/2674-113X/4/3/21).
