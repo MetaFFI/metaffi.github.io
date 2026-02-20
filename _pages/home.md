@@ -50,7 +50,14 @@ getLogger = module.load_entity(
     [new_metaffi_type_info(MetaFFITypes.metaffi_string8_type)],
     [new_metaffi_type_info(MetaFFITypes.metaffi_handle_type)])
 
+error = module.load_entity(
+    "class=org.apache.logging.log4j.Logger,callable=error,instance_required",
+    [new_metaffi_type_info(MetaFFITypes.metaffi_handle_type),
+     new_metaffi_type_info(MetaFFITypes.metaffi_string8_type)],
+    None)
+
 logger = getLogger("mylogger")
+error(logger, "Hello from Python!")
 ```
 
 </div>
@@ -69,6 +76,7 @@ log4j.bind_module_to_code(
     "log4j-api-2.21.1.jar;log4j-core-2.21.1.jar", "openjdk")
 
 logger = log4j.getLogger("mylogger")
+logger.error("Hello from Python!")
 ```
 
 </div>
