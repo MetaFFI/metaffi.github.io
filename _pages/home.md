@@ -12,13 +12,13 @@ header:
       url: https://github.com/MetaFFI/
 excerpt: >
   **Use Any Language Module from Any Language.**<br/>
-  No serialization. No network hop. No code generation. Each language runs in its own original runtime.
+  No JNI. No CPython API. No bridge code. Each language runs in its own original runtime.
 
 feature_row:
   - title: "Native Runtime, Zero Overhead"
     excerpt: "Each language runs in its own original runtime — no VMs, interpreters, or recompilation. MetaFFI bridges runtimes using FFI and embedding, preserving native performance."
-  - title: "5-15x Faster than gRPC"
-    excerpt: "In-process calls eliminate network overhead, serialization, and server management. Cross-language calls complete in microseconds, not milliseconds."
+  - title: "No Bridge Code"
+    excerpt: "No JNI, no CPython API, no cgo. Just load a module and call its functions. Cross-language calls complete in microseconds."
   - title: "Single-Language Development"
     excerpt: "Write your host code in one language. No `.proto` files, no generated stubs, no multi-language build systems. Just load and call."
 ---
@@ -42,7 +42,7 @@ getLogger = module.load_entity(
 logger = getLogger("mylogger")
 ```
 
-No gRPC server. No protobuf. No code generation. Just load and call.
+No JNI wrappers. No bridge code. No rewrites. Just load and call.
 
 [See more examples](/examples/){: .btn .btn--primary}
 
@@ -67,6 +67,6 @@ MetaFFI uses Foreign Function Interface (FFI) and embedding mechanisms to link l
 
 The system uses an *entity path* string to locate functions, methods, fields, and constructors within foreign modules, and a capabilities-based *XCall* calling convention to marshal data between runtimes using Common Data Types.
 
-[Read the paper](https://arxiv.org/abs/2408.14175){: .btn .btn--info}
+[Read the paper](https://www.mdpi.com/2674-113X/4/3/21){: .btn .btn--info}
 [Getting Started](/getting-started/){: .btn .btn--primary}
 [Performance](/performance/){: .btn .btn--success}
