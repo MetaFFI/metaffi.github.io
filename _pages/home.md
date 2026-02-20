@@ -27,7 +27,7 @@ feature_row:
 
 ## Quick Taste
 
-A Go function compiled with `metaffi -c --idl hello.go -g go` — call it from Python two ways:
+Use Apache log4j from Python — no JVM bridge code, no compilation step:
 
 {% include tabs.html %}
 
@@ -42,16 +42,15 @@ A Go function compiled with `metaffi -c --idl hello.go -g go` — call it from P
 from metaffi import MetaFFIRuntime, MetaFFITypes
 from metaffi.metaffi_types import new_metaffi_type_info
 
-runtime = MetaFFIRuntime("go")
-module = runtime.load_module("hello_MetaFFIGuest")
+runtime = MetaFFIRuntime("openjdk")
+module = runtime.load_module("log4j-api-2.21.1.jar;log4j-core-2.21.1.jar")
 
-say_hello = module.load_entity(
-    "callable=SayHello",
+getLogger = module.load_entity(
+    "class=org.apache.logging.log4j.LogManager,callable=getLogger",
     [new_metaffi_type_info(MetaFFITypes.metaffi_string8_type)],
-    [new_metaffi_type_info(MetaFFITypes.metaffi_string8_type)])
+    [new_metaffi_type_info(MetaFFITypes.metaffi_handle_type)])
 
-result = say_hello("Python")
-print(result)  # "Hello, Python! Greetings from Go."
+logger = getLogger("mylogger")
 ```
 
 </div>
@@ -59,24 +58,24 @@ print(result)  # "Hello, Python! Greetings from Go."
 <div class="metaffi-tabpanel" role="tabpanel" id="qt-stubs" aria-labelledby="qt-tab-stubs" hidden markdown="1">
 
 ```bash
-# One-time: generate typed Python stubs
-metaffi -c --idl hello.go -h python3
+# One-time: generate typed Python stubs for the JAR
+metaffi -c --idl log4j-api-2.21.1.jar -h python3
 ```
 
 ```python
-import hello_MetaFFIHost as hello
+import log4j_api_MetaFFIHost as log4j
 
-hello.bind_module_to_code("hello_MetaFFIGuest", "go")
+log4j.bind_module_to_code(
+    "log4j-api-2.21.1.jar;log4j-core-2.21.1.jar", "openjdk")
 
-result = hello.SayHello("Python")
-print(result)  # "Hello, Python! Greetings from Go."
+logger = log4j.getLogger("mylogger")
 ```
 
 </div>
 
 <noscript>
 
-**Generated Stubs mode:** Run `metaffi -c --idl hello.go -h python3` to generate typed stubs, then `import hello_MetaFFIHost as hello` and call `hello.SayHello("Python")` directly. See the [Host Compiler](/host-compiler/) page for details.
+**Generated Stubs mode:** Run `metaffi -c --idl log4j-api-2.21.1.jar -h python3` to generate typed stubs, then import and call `log4j.getLogger("mylogger")` directly. See the [Host Compiler](/host-compiler/) page for details.
 
 </noscript>
 
