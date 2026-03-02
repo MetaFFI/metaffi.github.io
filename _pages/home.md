@@ -105,7 +105,7 @@ No bridge code. No rewrites. Just load and call — or generate stubs and call.
 | OS | Tested |
 |:---|:-------|
 | **Windows** | Windows 11, Server 2022 |
-| **Ubuntu** | 22.04 |
+| **Ubuntu** | 24.04 |
 
 ## How It Works
 

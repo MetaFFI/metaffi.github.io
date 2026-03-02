@@ -7,7 +7,7 @@ toc_sticky: true
 
 ## Prerequisites
 
-- **Windows 11** or **Ubuntu 22.04** (other versions may work but are not tested with installer)
+- **Windows 11** or **Ubuntu 24.04** (other versions may work but are not tested with the installer)
 - At least one supported language runtime installed:
   - **Go** v1.22+
   - **OpenJDK** 11, 21, or 22
@@ -17,26 +17,26 @@ toc_sticky: true
 
 Download and run the installer for your platform:
 
-- [**Windows** (v0.3.0)](https://github.com/MetaFFI/metaffi-root/releases/download/v0.3.0/metaffi-installer-0.3.0.exe)
-- [**Ubuntu** (v0.3.0)](https://github.com/MetaFFI/metaffi-root/releases/download/v0.3.0/metaffi-installer-0.3.0)
+- [**Windows** (v0.3.1)](https://github.com/MetaFFI/metaffi-installer/releases/download/v0.3.1/metaffi-installer-0.3.1-Debug-windows.exe)
+- [**Ubuntu** (v0.3.1)](https://github.com/MetaFFI/metaffi-installer/releases/download/v0.3.1/metaffi-installer-0.3.1-Debug-ubuntu)
 
-Use `-s` for silent mode with default installation directory.
+Use `-s` for silent mode with the default installation directory.
 
 ### One-Liner Install
 
 **Windows CMD:**
 ```cmd
-curl -LO https://github.com/MetaFFI/metaffi-root/releases/download/v0.3.0/metaffi-installer-0.3.0.exe && metaffi-installer-0.3.0.exe -s
+curl -LO https://github.com/MetaFFI/metaffi-installer/releases/download/v0.3.1/metaffi-installer-0.3.1-Debug-windows.exe && metaffi-installer-0.3.1-Debug-windows.exe -s
 ```
 
 **Windows PowerShell:**
 ```powershell
-Invoke-WebRequest -Uri https://github.com/MetaFFI/metaffi-root/releases/download/v0.3.0/metaffi-installer-0.3.0.exe -OutFile metaffi-installer.exe; Start-Process .\metaffi-installer.exe -ArgumentList '-s' -Wait
+Invoke-WebRequest -Uri https://github.com/MetaFFI/metaffi-installer/releases/download/v0.3.1/metaffi-installer-0.3.1-Debug-windows.exe -OutFile metaffi-installer.exe; Start-Process .\metaffi-installer.exe -ArgumentList '-s' -Wait
 ```
 
 **Ubuntu:**
 ```bash
-wget https://github.com/MetaFFI/metaffi-root/releases/download/v0.3.0/metaffi-installer-0.3.0 && chmod +x metaffi-installer-0.3.0 && ./metaffi-installer-0.3.0 -s
+wget https://github.com/MetaFFI/metaffi-installer/releases/download/v0.3.1/metaffi-installer-0.3.1-Debug-ubuntu && chmod +x metaffi-installer-0.3.1-Debug-ubuntu && sudo ./metaffi-installer-0.3.1-Debug-ubuntu -s
 ```
 
 ### What the Installer Does
@@ -47,34 +47,40 @@ wget https://github.com/MetaFFI/metaffi-root/releases/download/v0.3.0/metaffi-in
 - Adds the installation directory to `PATH`
 - Sets `METAFFI_HOME` environment variable
 
-**Linux:**
+**Ubuntu:**
 - Checks prerequisites and offers to install missing dependencies
 - Copies MetaFFI files to the installation directory (default: `/usr/local/metaffi`)
 - Sets `METAFFI_HOME` in `~/.profile`
 
 ## Install Language Plugins
 
-Install the plugins for the languages you want to use:
+Plugins are distributed as `.zip` archives and installed with the `metaffi` CLI.
 
 | Language | Windows | Ubuntu |
 |:---------|:--------|:-------|
-| **Python 3** | [Download](https://github.com/MetaFFI/metaffi-root/releases/download/v0.3.0/metaffi-plugin-installer-0.3.0-python311.exe) | [Download](https://github.com/MetaFFI/metaffi-root/releases/download/v0.3.0/metaffi-plugin-installer-0.3.0-python311) |
-| **Go** | [Download](https://github.com/MetaFFI/metaffi-root/releases/download/v0.3.0/metaffi-plugin-installer-0.3.0-go.exe) | [Download](https://github.com/MetaFFI/metaffi-root/releases/download/v0.3.0/metaffi-plugin-installer-0.3.0-go) |
-| **OpenJDK** | [Download](https://github.com/MetaFFI/metaffi-root/releases/download/v0.3.0/metaffi-plugin-installer-0.3.0-openjdk.exe) | [Download](https://github.com/MetaFFI/metaffi-root/releases/download/v0.3.0/metaffi-plugin-installer-0.3.0-openjdk) |
+| **Python 3** | [Download](https://github.com/MetaFFI/metaffi-installer/releases/download/v0.3.1/metaffi-plugin-python3-0.3.1-Debug-windows.zip) | [Download](https://github.com/MetaFFI/metaffi-installer/releases/download/v0.3.1/metaffi-plugin-python3-0.3.1-Debug-ubuntu.zip) |
+| **Go** | [Download](https://github.com/MetaFFI/metaffi-installer/releases/download/v0.3.1/metaffi-plugin-go-0.3.1-Debug-windows.zip) | [Download](https://github.com/MetaFFI/metaffi-installer/releases/download/v0.3.1/metaffi-plugin-go-0.3.1-Debug-ubuntu.zip) |
+| **JVM** | [Download](https://github.com/MetaFFI/metaffi-installer/releases/download/v0.3.1/metaffi-plugin-jvm-0.3.1-Debug-windows.zip) | [Download](https://github.com/MetaFFI/metaffi-installer/releases/download/v0.3.1/metaffi-plugin-jvm-0.3.1-Debug-ubuntu.zip) |
 
-The Python3 API is also available via pip: `pip install metaffi-api`
+After downloading, install each plugin with:
+
+```bash
+metaffi --plugin --install <path-to-plugin.zip>
+```
 
 ### One-Liner Plugin Install (All Languages)
 
 **Windows CMD:**
 ```cmd
-curl -LO https://github.com/MetaFFI/metaffi-root/releases/download/v0.3.0/metaffi-plugin-installer-0.3.0-python311.exe && metaffi-plugin-installer-0.3.0-python311.exe && curl -LO https://github.com/MetaFFI/metaffi-root/releases/download/v0.3.0/metaffi-plugin-installer-0.3.0-go.exe && metaffi-plugin-installer-0.3.0-go.exe && curl -LO https://github.com/MetaFFI/metaffi-root/releases/download/v0.3.0/metaffi-plugin-installer-0.3.0-openjdk.exe && metaffi-plugin-installer-0.3.0-openjdk.exe
+metaffi --plugin --install https://github.com/MetaFFI/metaffi-installer/releases/download/v0.3.1/metaffi-plugin-python3-0.3.1-Debug-windows.zip && metaffi --plugin --install https://github.com/MetaFFI/metaffi-installer/releases/download/v0.3.1/metaffi-plugin-go-0.3.1-Debug-windows.zip && metaffi --plugin --install https://github.com/MetaFFI/metaffi-installer/releases/download/v0.3.1/metaffi-plugin-jvm-0.3.1-Debug-windows.zip
 ```
 
 **Ubuntu:**
 ```bash
-wget https://github.com/MetaFFI/metaffi-root/releases/download/v0.3.0/metaffi-plugin-installer-0.3.0-python311 -O python311 && chmod +x python311 && ./python311 && wget https://github.com/MetaFFI/metaffi-root/releases/download/v0.3.0/metaffi-plugin-installer-0.3.0-go -O go && chmod +x go && ./go && wget https://github.com/MetaFFI/metaffi-root/releases/download/v0.3.0/metaffi-plugin-installer-0.3.0-openjdk -O openjdk && chmod +x openjdk && ./openjdk
+metaffi --plugin --install https://github.com/MetaFFI/metaffi-installer/releases/download/v0.3.1/metaffi-plugin-python3-0.3.1-Debug-ubuntu.zip && metaffi --plugin --install https://github.com/MetaFFI/metaffi-installer/releases/download/v0.3.1/metaffi-plugin-go-0.3.1-Debug-ubuntu.zip && metaffi --plugin --install https://github.com/MetaFFI/metaffi-installer/releases/download/v0.3.1/metaffi-plugin-jvm-0.3.1-Debug-ubuntu.zip
 ```
+
+The Python3 API is also available via pip: `pip install metaffi-api`
 
 ## Choose Your Workflow
 
@@ -156,11 +162,11 @@ runtime.release_runtime_plugin()
 Pre-installed Docker containers are available:
 
 ```bash
-# Ubuntu 22.04
-docker pull tscs/metaffi-u2204:0.3.0
+# Ubuntu 24.04
+docker pull tscs/metaffi-u2404:0.3.1
 
 # Windows Server Core 2022
-docker pull tscs/metaffi-win-core2022:0.3.0
+docker pull tscs/metaffi-win-core2022:0.3.1
 ```
 
 ## Build from Source
