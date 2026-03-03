@@ -94,13 +94,13 @@ No bridge code. No rewrites. Just load and call — or generate stubs and call.
 
 ## Supported Languages
 
-| Language | Runtime | Status |
-|:---------|:--------|:-------|
-| **Go** | Go runtime via cgo | v1.22+ |
-| **JVM** | OpenJDK via JNI | JDK 11, 21, 22 |
-| **Python 3** | CPython via CPython API | v3.11+ |
+| Language | Runtime                 | Status                |
+|:---------|:------------------------|:----------------------|
+| **Go** | Go runtime via cgo      | v1.22+                |
+| **JVM** | JVM via JNI             | Tested on 11, 21, 22 |
+| **Python 3** | CPython via CPython API | v3.11+                |
 
-## Supported Operating Systems
+## Tested Operating Systems
 
 | OS | Tested |
 |:---|:-------|
